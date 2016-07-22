@@ -1,0 +1,33 @@
+.category-color {
+        /* IE 8 */
+     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=77)";
+     /* IE 5-7 */
+     filter: alpha(opacity=77);
+     /* Netscape */
+     -moz-opacity: 0.77;
+     /* Safari 1.x */
+     -khtml-opacity: 0.77;
+     /* Good browsers */
+     opacity: 0.77;
+}
+
+.filter-blog-featured {
+    padding: 60px 25px 20px;
+    background-image: url('../img/bgi/filter-featured-blog.png');
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+}
+
+
+.article .inner-wrap {
+    padding: 0px !important;
+}
+.category .article-small h4 {
+    min-height: 72px;
+}
+.col-20-percent .section-inner {
+    background-image: url('../img/bgi/filter-featured-blog.png');
+    background-size: cover;
+    background-position: center;
+}

@@ -1,0 +1,30 @@
+.contact-popup-sticky {
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    z-index: 10;
+}
+.contact-popup-sticky a {
+    background-color: #30439C;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    line-height: 50px;
+    float: left;
+    text-align: center;
+    color: #fff;
+    font-size: 23px;
+    transition-property: "background-color, color";
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in-out;
+}
+
+.contact-popup-sticky a:hover {
+    color: #fff;
+    background-color: #C49460;
+}
+.fancybox-close {
+    background-image: url('../img/close-x-strong.png') !important;
+    top: -28px !important;
+    right: -28px !important;
+}

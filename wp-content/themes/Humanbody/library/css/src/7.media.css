@@ -1,0 +1,672 @@
+
+/* ===== Start iPads (portrait and landscape)
+--------------------------------------------------------------------------------------------------*/
+
+@media only screen and (max-width : 1600px) {
+	.section-inner{
+		padding-top: 25%;
+	}
+
+	.section-inner p {
+		min-height: 50px;
+	}
+
+	.col-20-percent{
+		width: 25%;
+	}
+
+	.ideas-section .section-inner {
+		text-align: left;
+		padding: 30px 30px 40px;
+	}
+
+}
+
+@media only screen and (max-width : 1280px) {
+	.upload-photo{
+		margin: -10px 5px 0px 0;
+	}
+}
+
+
+@media only screen and (max-width : 1200px) {
+
+	.main-menu li {
+		padding: 21px 3px 21px 5px;
+	}
+
+	.main-menu li a{
+		font-size: 12px;
+	}
+
+	.main-menu li i.dot{
+		margin-right: 5px;
+	}
+
+	.text-wrapper {
+		max-width: 410px;
+	}
+
+	.col-20-percent{
+		width: 33.33%;
+	}
+
+/*	.grid-item {
+		padding: 10px;
+	}
+
+	.grid {
+		margin: -10px -10px 0;
+		}*/
+
+
+
+	}
+/* ===== End iPads (portrait and landscape)
+--------------------------------------------------------------------------------------------------*/
+
+@media only screen and (max-width : 991px) {
+
+
+	.slider-nav-container{
+		position: relative;
+	}
+	
+	.ideas.secondary-subpage .body-wrap .social-wrapper{
+		margin-left: -15px;
+	}
+
+	.grid-sizer,
+	.grid-item{
+		width: 50%;
+	}
+
+	.grid-item-width50 {
+		width: 100%;
+	}
+
+	.events-bottom-inner .specifications{
+		margin-bottom: 30px;
+	}
+
+	.events-bottom-inner{
+		padding: 20px 0 0;
+	}
+
+	.category-list-items{
+		width: 33.33%;
+	}
+
+	.dd-pointer{
+		right: 5%;
+	}
+
+	.col-20-percent{
+		width: 50%;
+	}
+
+	.sign-up-box:after{
+		border-color: #fff;
+	}
+
+	.left-section .text-wrapper {
+		right: auto;
+		left: 67px
+	}
+
+	.main-content-wrapper{
+		margin-top: -80px;
+	}
+
+
+	#menu-button{
+		display: block;
+	}
+
+	#nav {
+		display: none;
+		position: absolute;
+		right: -270px;
+		background: #000;
+		margin-top: 0px;
+		top: 0px;
+		width: 270px;
+		height: 100%;
+		z-index: 3;
+	}
+	.container {
+		width: 100%;
+
+	}
+
+	.main-menu li{
+		float: none;
+		padding: 10px 0px 10px;
+		-ms-transform: rotate(180deg);
+		-webkit-transform: rotate(180deg);
+		transform: rotate(180deg);
+
+	}
+
+	.main-menu li a{
+		color: #fff;
+	}
+
+	.main-menu{
+		-ms-transform: rotate(180deg);
+		-webkit-transform: rotate(180deg);
+		transform: rotate(180deg);
+	}
+
+	video {
+		position: relative;
+		top: 0;
+		height: auto;
+		width: 100%;
+		display: block;
+	}
+
+	.left-section,
+	.right-section{
+		position: relative;
+		width: 100%;
+		top: 0;
+	}
+
+	.home .left-section video{
+		display: none;
+	}
+
+	.home .left-section{
+		min-height: 540px;
+		background: url(../img/bgi/video-mobile-bgi.jpg) no-repeat top center;
+	}
+
+	.text-inner{
+		padding: 0 15px;
+	}
+
+	.left-section .text-inner {
+/*		position: absolute;
+		top: 0;
+		left: 0;*/
+	}
+
+	.right-section .text-wrapper,
+	.landing .left-section .text-inner,
+	.landing .left-section .text-wrapper{
+		position: relative;
+	}
+
+	.right-section{
+		padding: 100px 0;
+	}
+
+	.landing .left-section,
+	.landing .right-section{
+		padding: 150px 0;
+	}
+
+	.right-section img {
+		position: absolute;
+		right: 5%;
+		bottom: 0;
+		max-height: 75%;
+	}
+
+	.sign-up-section{
+		background: #30439c;
+	}
+
+	.sign-up-box {
+		position: relative;
+		top: 0;
+		left: 0;
+		z-index: 3;
+		margin-left: 0;
+		height: 80px;
+		width: 80px;
+		margin: 0 auto;
+	}
+
+	.half-wrap {
+		width: 100%;
+		min-height: 400px;
+	}
+
+	.left-container .left-inner .inner-wrap {
+		padding: 0 15px;
+	}
+
+	.right-container{
+		position: relative;
+	}
+
+	.social-wrapper {
+		margin-top: 30px;
+		margin-bottom: 30px;
+	}
+
+	.left-section-community,
+	.right-section-community {
+		width: 100%;
+		min-height: 300px;
+		text-align: center;
+	}
+	.left-section-community h2,
+	.right-section-community h2 {
+		padding-top: 100px;
+	}
+
+	.body-wrap{
+		padding: 0 0 22px;
+	}
+
+	.description-wrapper{
+		padding-bottom: 20px;
+	}
+
+	.secondary-subpage .description-wrapper h1{
+		line-height: 50px;
+	}
+
+
+	.did-you-know{
+		position: relative;
+		top: 0;
+		left: 0;
+		margin: 0 auto 30px;
+	}
+
+	.awareness-inner-wrapper {
+		padding: 30px 15px;
+	}
+
+}
+
+@media only screen and (max-width: 800px) {
+
+	.community-subpage .forum-section {
+		background: url(../img/bgi/community-forum-bg.png) no-repeat top right;
+		background-size: cover;
+	}
+
+
+	/* Force table to not be like tables anymore */
+	#no-more-tables table,
+	#no-more-tables thead,
+	#no-more-tables tbody,
+	#no-more-tables th,
+	#no-more-tables td,
+	#no-more-tables tr {
+		display: block;
+	}
+
+	/* Hide table headers (but not display: none;, for accessibility) */
+	#no-more-tables thead tr {
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+
+	#no-more-tables tr {
+		margin-bottom: 25px;
+		border: 1px solid #fff;
+	}
+
+	#no-more-tables td {
+		border: none;
+		border-bottom: 0;
+		position: relative;
+		white-space: normal;
+		text-align:center;
+		padding-top: 60px;
+	}
+
+	#no-more-tables td:before {
+		position: absolute;
+		top: 10px;
+		left: 0;
+		width: 100%;
+		padding-right: 10px;
+		white-space: initial;
+		text-align: center;
+		font-size: 15px;
+		font-weight: normal;
+		font-family: 'open_sansbold';
+		padding: 0;
+	}
+
+
+	#no-more-tables td:before { content: attr(data-title); }
+
+	.messages-table .title-wrapper:after{
+		display: none;
+	}
+
+	.table-section.messages-table table tr td:first-child,
+	.table-section.messages-table table tr td:nth-child(2),
+	.table-section.messages-table table tr td:nth-child(5),
+	.time-detail{
+		width: auto!important;
+	}
+
+	.friend-list-table td .friend-name{
+		text-align: center;;
+	}
+
+	.friend-list-table td .friend-name {
+		text-align: center!important;
+	}
+}
+
+
+
+
+
+@media only screen and (max-width : 780px) {
+
+	.popup-inner{
+		overflow: auto;
+	}
+
+	.community-subpage .description-wrapper h1 {
+		margin: 40px 0 20px;
+	}
+
+	.slick-arrow{
+		display: none!important;
+	}
+
+	.gallery-bottom-inner {
+		padding: 0px 0 20px;
+	}
+
+	.secondary-subpage .description-wrapper h1{
+		margin: 40px 0 40px;
+		word-wrap: break-word;
+	}
+
+	.what-can-bottom-inner{
+		padding: 20px 0;
+	}
+
+	.what-can-section .description-wrapper{
+		margin: 0 0 20px;
+	}
+
+	.secondary-subpage .description-wrapper h1{
+		line-height: 40px;
+		font-size: 34px!important;
+	}
+
+	.category-list-items {
+		width: 50%;
+	}
+
+	.right-section{
+		padding: 30px 0 0;
+	}
+
+
+	.landing .left-section,
+	.landing .right-section{
+		padding: 150px 0;
+	}
+
+	.right-section img {
+		position: relative;
+		right: 0;
+		bottom: 0;
+		max-height: 300px;
+		margin: 0 auto;
+		display: block;
+	}
+
+	.left-section .text-inner{
+		position: relative;
+		/*background-color: black;*/
+		padding: 30px 15px;
+	}
+
+
+
+	.landing .left-section .text-inner{
+		padding: 0px 15px;
+		background-color: transparent;
+	}
+
+	.left-section .text-wrapper {
+		right: 0;
+		left: 0;
+		position: relative;
+	}
+
+
+	.left-section img {
+/*		position: absolute;
+		left: 0;
+		top: 8%;*/
+	}
+
+	.right-section .text-wrapper {
+		left: 0;
+	}
+
+	h1 {
+		font-size: 40px;
+	}
+
+	.main-content-wrapper {
+		margin-top: 25px;
+	}
+
+	.top-banner-wrapper {
+		min-height: 0px;
+	}
+
+	.search-wrapper{
+		margin-bottom: 25px;
+	}
+
+	h2 {
+		font-size: 28px;
+	}
+
+	.sidebar-inner {
+		background: transparent;
+		padding: 0;
+	}
+
+	.newsletter-wrapper{
+		margin-bottom: 25px;
+	}
+
+	.right-comment{
+		clear: both;
+		width: 100%;
+		padding: 0 15px;
+	}
+
+	.research-left-wrap{
+		margin-bottom: 50px;
+	}
+	#footer{
+		position: relative;
+	}
+
+	#wrapper{
+		padding-bottom: 0!important;
+	}
+
+	.subpage-bottom-inner a{
+		float: none!important;
+		margin: 0 auto;
+		display: block;
+	}
+
+	.subpage-bottom-inner .visit-website{
+		margin-bottom: 25px;
+	}
+
+}
+
+
+@media only screen and (max-width : 767px){
+
+	.title-divider{
+		bottom: -30px;
+	}
+
+
+	.article-banner a{
+		min-height: 90px;
+		width: 100%;
+		float: none;
+		margin-bottom: 15px;
+	}
+
+	.article-banner a:last-child{
+		margin-bottom: 0px;
+	}
+
+
+	.what-can-bottom-inner:before{
+		-webkit-transform: rotate(-90deg);
+
+		-moz-transform: rotate(-90deg);
+
+		-ms-transform: rotate(-90deg);
+
+		-o-transform: rotate(-90deg);
+
+		transform: rotate(-90deg);
+
+		background: transparent url('../img/bgi/or-rotate.png') no-repeat center;
+	}
+
+	.what-can-bottom-inner .submit-idea{
+		margin: 0px auto 40px;
+	}
+
+	.community-subpage .community-section {
+		background-position: top right;
+		background-size: cover;
+	}
+
+
+	.myth-pic img {
+		display: block;
+		margin: 0 auto 30px;
+	}
+
+	.paragraph-wrapper {
+		padding: 0;
+	}
+	
+	.map-search-affections .col-md-9 .dropdown-title{
+		display: none;
+	}
+	
+	.dropdown-title.mobile-only, .dropdown-title.mobile-too{
+		display: block !important;
+	}
+	
+	.search-profile .col-md-9 .dropdown-outer-wrapper:after{
+		content: '';
+	}
+
+
+}
+
+@media only screen and (min-width : 0px) and (max-width : 600px){
+
+	.afectiuni-section .slick-slide img {
+		width: auto;
+		max-height: 560px;
+		margin: 0 auto;
+	}
+
+	.col-20-percent{
+		width: 100%;
+	}
+
+	.grid-sizer,
+	.grid-item{
+		width: 100%;
+	}
+
+	.avatar-popup li{
+		margin: 20px 14px;
+	}
+
+
+}
+
+@media only screen and (min-width : 0px) and (max-width : 520px){
+
+
+
+
+
+	.research-section .description-wrapper {
+		margin-top: 0px;
+		margin-bottom: 20px;
+	}
+
+	.landing .left-section,
+	.landing .right-section{
+		padding: 80px 0;
+	}
+
+	.category-list-items {
+		width: 100%;
+	}
+
+	.article-nav{
+		font-size: 11px;
+		letter-spacing: 0;
+	}
+
+	.prev-article i {
+		right: 5px;
+		font-size: 18px;
+	}
+
+	.next-article i {
+		left: 5px;
+		font-size: 18px;
+	}
+
+}
+
+
+/* ===== Start Smartphones (portrait and landscape)
+--------------------------------------------------------------------------------------------------*/
+@media only screen and (min-width : 0px) and (max-width : 480px){
+	#logo {
+		max-width: 100px;
+		width: 100%;
+		height: auto;
+		position: relative;
+		bottom: 0px;
+	}
+
+	h1 {
+		font-size: 34px;
+	}
+
+	.breadcrumb-wrapper li{
+		max-width: 100%;
+	}
+
+	.preview-container a .align-middle img{
+		margin-bottom: 15px;
+	}
+
+	.main-content iframe{
+		min-height: 260px;
+	}
+}
+/* ===== End Smartphones (portrait and landscape)
+--------------------------------------------------------------------------------------------------*/

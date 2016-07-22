@@ -1,0 +1,409 @@
+.submit-idea, .submit-idea:hover {
+    height: 33px;
+    display: inline-block;
+    line-height: 54px;
+    color: #fff !important;
+    text-decoration: none !important;
+}
+
+.feedback-form div input[type="text"], .feedback-form div input[type="email"], .feedback-form div textarea {
+    border-color: #efe0cf !important;
+}
+
+
+
+
+.main-menu li a .fa-home {
+    margin: 0px;
+    top: -2px;
+    text-decoration: none;
+}
+.main-menu li a:hover .fa-home, .main-menu li a.active .fa-home  {
+    color: #c49460;
+}
+.left-section .text-wrapper a:hover, .right-section .text-wrapper a:hover {
+    font-family: 'open_sanslight' !important;
+}
+.left-section {
+    overflow: hidden;
+}
+#header {
+    position: relative;
+    z-index: 100;
+    right: 0px !important;
+}
+.sign-up-wrapper a.sign-in, .sign-up-wrapper a.sign-up {
+	max-width: 84px;
+	width: 100%;
+	height: 33px;
+	text-transform: uppercase;
+	border: none;
+	outline: none;
+	color: #fff;
+	border-radius: 3px;
+	font-size: 12px;
+	background: #000;
+	text-align: center;
+	line-height: 33px;
+	text-decoration: none;
+}
+
+.sign-up-wrapper a.sign-in{
+	border: 1px solid #c49460;
+	background: #c49460;
+}
+
+.sign-up-wrapper a.sign-in:hover{
+	background: #fff;
+	color: #c49460;
+}
+
+.sign-up-wrapper a.sign-up{
+	border: 1px solid #30439c;
+	background: #30439c;
+	margin-left: 10px;
+}
+
+.sign-up-wrapper a.sign-up:hover{
+	color: #30439c;
+	background: #fff;
+}
+
+.pagination>li>span.active {
+    background-color: #fff;
+    color: #26282b;
+}
+select#select-category-forum  {
+    display: none;
+}
+
+/* category color support */
+.top-banner-wrapper {
+	position: relative;
+}
+.category-color {
+	position: absolute;
+	top:0px;
+	left:0px;
+	width: 100%;
+	height:100%;
+}
+.breadcrumb-wrapper {
+	z-index: 1;
+    position: relative;
+}
+/* post fix for category */
+.left-container {
+	position: relative;
+}
+
+
+.comment-level-1 {
+    width: 100%;
+    display: inline-block;
+}
+a.bbp-reply-to-link {
+    background: 0 0;
+    border: none;
+    color: #30439c;
+    text-transform: capitalize;
+    display: inline-block;
+    width: auto;
+    height: auto;
+    font-size: 13px;
+}
+.use-img-inner img {
+    height: auto;
+}
+.comment-container {
+    margin-top: 0px;
+}
+.meeting-title-reply {
+    margin-bottom: 30px;
+}
+.first-meeting-reply {
+    margin-bottom: -5px;
+}
+
+.pagination-reply-meeting {
+    width: 100%;
+    position: relative;
+    text-align: center;
+    float:left;
+}
+.pagination-reply-meeting a,.pagination-reply-meeting span {
+        position: relative;
+        display: inline-block;
+        margin: 5px 8px;
+        height: 30px;
+        min-width: 30px;
+        font-family: open_sansregular;
+        margin-left: 0;
+        line-height: 30px;
+        font-size: 13px;
+        color: #c49460;
+        text-decoration: none;
+        background-color: transparent;
+        border: 1px solid #c49460;
+
+}
+.pagination-reply-meeting span {
+    border-color:#c49460;
+}
+.pagination-reply-meeting a:hover,.pagination-reply-meeting span {
+    background-color: #c49460;
+    color: #fff;
+}
+.feedback-wrapper h3 {
+    width: 100%;
+    float:left;
+}
+
+
+#subscribe-reply {
+    float:left;
+    width: auto;
+    margin-right: 10px;
+}
+
+
+
+/* pixel perfect ?? too many bugs */
+.notifications-list {
+    right: -15px;
+    top: 52px;
+}
+.notifications-list ul li {
+    padding: 10px 0;
+}
+.notifications-list .user-content-details span {
+    margin-top: 2px;
+    font-size: 11px;
+}
+/* unread state ??? */
+.notifications-list ul li.unread {
+    background: rgba(205, 51, 51, 0.4);
+}
+/* hover state ??  */
+.notifications-list ul li:hover {
+    background: rgba(30, 30, 30, 0.4);
+}
+/* hover state ??  */
+.notifications-list ul li.unread:hover {
+    background: rgba(126, 38, 38, 0.4);
+}
+
+
+/* mobile menu */
+@media (max-width: 990px) {
+    #nav {
+        display: none;
+    }
+    .main-menu li i.dot {
+        display: none;
+    }
+}
+
+.col-20-percent {
+    background-position: center;
+    background-size: cover;
+    min-height: 400px;
+}
+
+body.search-results {
+    margin: 0px;
+}
+
+
+.col-20-percent {
+    background-position:center;background-size:cover;
+}
+.view-area {
+    max-width: 126px;
+    width: 100%;
+    height: 40px;
+    text-transform: uppercase;
+    border: none;
+    outline: none;
+    color: #fff;
+    border-radius: 3px;
+    font-size: 12px;
+    border: 1px solid #fff;
+    background: transparent;
+    display: inline-block;
+    line-height: 40px;
+}
+.view-area:hover, .view-area:active, .view-area:focus {
+    color: #fff;
+    text-decoration: none;
+}
+/*
+.subpage-bottom-inner a {
+    border: 1px solid #fff;
+    background: 0 0;
+    height: 55px;
+    max-width: 365px;
+    width: 100%;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform:uppercase;
+    outline: 0;
+    color: #fff;
+    border-radius: 3px;
+    text-align: center;
+    line-height: 55px;
+    text-decoration: none !important;
+}
+.subpage-bottom-inner a:hover,.subpage-bottom-inner a:active, .subpage-bottom-inner a:focus {
+    background: #30439c;
+}
+.subpage-bottom-inner a.visit-website i {
+    background: url(../img/visit.png) center no-repeat;
+    width: 36px;
+}
+.subpage-bottom-inner a.make-donation i {
+    background: url(../img/donate.png) no-repeat center;
+    width: 36px;
+}
+.subpage-bottom-inner a i {
+    height: 24px;
+    width: 24px;
+    margin-right: 10px;
+    display: inline-block;
+    position: relative;
+    top: 3px;
+}
+*/
+
+
+/* gallery center boxes in slick slider */
+.slick-initialized .slick-slide {
+    display: inline-block !important;
+/*    float: none !important;*/
+}
+.slick-slider .slick-track {
+    text-align: center;
+    min-width: 100%;
+}
+
+
+.view-gallery {
+    color: #fff;
+    text-decoration: none !important;
+    text-transform: uppercase;
+    text-align: center;
+}
+.view-gallery:hover, .view-gallery:active, .view-gallery:focus {
+    color :#fff;
+}
+.upload-button input[type="file"] {
+    opacity: 0;
+    z-index: 10;
+    position: relative;
+}
+.upload-button span {
+    position: absolute;
+    line-height: 70px;
+    top: 0px;
+    left: 0px;
+    text-align: center;
+    width: 100%;
+    font-weight: bold;
+    color: #fff;
+    font-size: 14px;
+}
+.upload-button span i {
+border: 1px solid #fff;
+border-radius: 100px;
+width: 20px;
+height: 20px;
+font-size: 10px;
+text-align: center;
+color: #fff;
+line-height: 18px;
+margin-right: 6px;
+}
+.main-menu li a .fa-home {
+    margin: 0;
+    top: 1px !important;
+}
+.sign-up-box .sign-up {
+    margin-left: 0px;
+}
+
+.membership-content .support h3{
+    color: #26282b;
+    border-bottom: 1px solid #26282b;
+}
+
+.membership-content .support p{
+    color: #26282b;
+    font-weight: 600;
+}
+
+.fancy-therapeut{
+    background: transparent;
+    margin: 30px auto;
+    text-align: center;
+    max-width: 168px;
+    border: 1px solid #fff;
+    border-radius: 4px;
+    color: #fff;
+    display: block;
+    height: 40px;
+    width: 100%;
+    font-family: 'open_sansregular';
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 2px;
+    line-height: 38px;
+}
+
+.fancy-therapeut:hover {
+    background: #30439c;
+    color: #fff;
+    text-decoration: none;
+}
+
+#fancybox-therapeut{
+    display: none;
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 10px 10px 20px 0px rgba(0,0,0,0.22);
+    background: rgba(48,68,156,0.85);
+    background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(48,68,156,0.85)), color-stop(100%, rgba(196,148,96,1)));
+    background: linear-gradient(135deg, rgba(48,68,156,0.85) 0%, rgba(196,148,96,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#30449c', endColorstr='#c49460', GradientType=1 );
+    padding: 20px;
+}
+
+#fancybox-therapeut ul li{
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #fff; 
+    min-height: 145px;
+}
+
+#fancybox-therapeut ul li:last-child{
+    border-bottom: 1px solid transparent;
+}
+
+#fancybox-therapeut ul li img{
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+.name-psiho{ 
+    display: block;
+    font-size: 26px;
+    font-family: 'open_sanslight';
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+#fancybox-therapeut ul li p{
+    color: #fff;
+}
+

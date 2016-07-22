@@ -1,0 +1,54 @@
+.user-sidebar-cont .premium {
+    opacity: 0.5;
+}
+.user-sidebar-cont .premium-notification {
+    color: #F4CC83;
+
+    display: block;
+    height: 20px;
+    font-size: 11px;
+}
+.premium.reduce-opacity {
+    opacity: 0.4;
+}
+
+.user-sidebar-top i{
+	font-size: 14px;
+	color: #fff;
+	line-height: 14px;
+	font-family: 'open_sanslight';
+	font-style: normal;
+	padding-right: 60px;
+}
+
+.user-sidebar-top .edit{
+	color: #fff;
+}
+
+.user-sidebar-top .edit i{
+    font: normal normal normal 14px/1 FontAwesome !important;
+    font-size: inherit !important;
+    padding: 0 5px 0 0;
+}
+
+.messages-table.collection tr:hover .messenger-name{
+	font-weight: bold;
+}
+
+.mark-all-read {
+    float: right;
+    color :#fff;
+    margin: 20px 0;
+    background: none;
+    border: medium none;
+    border-radius: 0;
+    outline: medium none;
+    text-transform: none;
+    width: auto;
+    max-width: none;
+}
+.mark-all-read:hover {
+    color :#fff;
+    text-decoration: underline;
+
+}

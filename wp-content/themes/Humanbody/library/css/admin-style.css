@@ -1,0 +1,141 @@
+/* cmb td */
+.cmb2-metabox>.cmb-row .cmb-repeat-table .cmb-row>.cmb-td {
+    padding-bottom: 0px;
+    padding-top: 0px;
+    padding-left: 0px;
+}
+/* cmb repeateble row */
+.cmb2-wrap .cmb-row.cmb-repeat-row {
+    padding-top: 10px !important;
+}
+
+
+/* repeatable group */
+.cmb-repeat-group-field {
+    margin: 0px !important;
+    padding: 10px 0px !important;
+}
+
+.cmb2-id-offers-content .cmb-td {
+    width: 730px;
+
+    display: inline-block;
+}
+.cmb-row {
+    max-width: 1000px;
+    padding: 15px 0px 10px;
+    margin-bottom: 5px !important;
+        background: rgba(255, 255, 255, 0.17);
+}
+.cmb-row .cmb-th {
+    box-sizing: border-box;
+    width: 30%;
+    padding-left: 10px;
+
+}
+.cmb-row .cmb-td {
+    box-sizing: border-box;
+    width:70%;
+
+}
+.cmb-row.cmb-repeat-group-wrap .cmb-td {
+    width: 100%;
+}
+.cmb-row .cmb-td input[type="text"], .cmb-row .cmb-td textarea {
+    width: 100%;
+}
+.cmb2-upload-file {
+    width: 75% !important;
+}
+/* add repeatable row button */
+.cmb-add-group-row.button {
+    float: right;
+    margin-bottom: 10px;
+    margin-right: 10px;
+}
+/* save button */
+.cmb-form .button-primary {
+    margin-top: 20px;
+    width: 140px;
+    height: 37px;
+}
+.cmb-field-list input[type="text"] {
+    /*width: 40% !important;*/
+    margin-bottom: 16px !important;
+}
+
+/* cmb2 add checkbox fix on labels overlaping */
+.cmb-td input[type="checkbox"] {
+    z-index: 10;
+}
+/* reduce image width on image status */
+.cmb2-media-status .img-status img {
+    max-height: 80px !important;
+    width: auto !important;
+}
+.cmb-row {
+    /*float:left;*/
+    /*width: 80%;*/
+}
+.cmb-type-title {
+    /*width: 20%;*/
+}
+.cmb2-wrap.form-table {
+    /*float:left;*/
+}
+#cmb2-metabox-data_content .cmb-type-wysiwyg {
+    max-width: 100% !important;
+}
+#cmb2-metabox-data_content .cmb-type-wysiwyg .cmb-td {
+    width: 100%;
+}
+
+
+#cmb2-metabox-topic-location input {
+    width: 100% !important;
+}
+#topic-location {
+    display: none;
+}
+#cmb2-metabox-research-description .cmb-td, #cmb2-metabox-research-note-description .cmb-td,
+#cmb2-metabox-research-link .cmb-td, #cmb2-metabox-research-donate .cmb-td,
+#cmb2-metabox-research-link .cmb-td input, #cmb2-metabox-research-donate .cmb-td input,
+#cmb2-metabox-research-short-description .cmb-td,
+#cmb2-metabox-research-short-description .cmb-td textarea,
+#cmb2-metabox-gallery-meta .cmb-td,
+#cmb2-metabox-gallery-meta .cmb-td input
+
+{
+    width: 100% !important;
+}
+
+
+#subscribers-metabox input, #cmb2-metabox-gallery-photos-meta .cmb-remove-field-row .cmb-remove-group-row  {
+    display: none;
+}
+ #cmb2-metabox-gallery-photos-meta .cmb2-media-status {
+     float:left;
+     margin-top: -16px;
+     width: 150px;
+}
+#cmb2-metabox-gallery-photos-meta .cmb2-upload-file.regular-text {
+    display: inline-block;
+}
+#affection-meta .cmb-td, #affection-meta .cmb-row
+,
+#affection-advice-meta .cmb-td,#affection-advice-meta .cmb-row
+,
+#affection-myth-meta .cmb-td,#affection-myth-meta  > .cmb-row
+,
+#affection-statistics-meta .cmb-td,#affection-statistics-meta .cmb-row
+,
+#affection-know-meta .cmb-td, #affection-know-meta .cmb-row {
+    width: 100%;
+    max-width: 100%;
+}
+#cmb2-metabox-affection-links-meta input,#cmb2-metabox-affection-links-meta .cmb-td
+,#cmb2-metabox-affection-links-meta  p
+ {
+    width: 100% !important;
+    padding-bottom: 0px !important;
+}

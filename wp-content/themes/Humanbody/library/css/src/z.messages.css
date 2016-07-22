@@ -1,0 +1,12 @@
+.messages-table.collection tr {
+    cursor: pointer;
+}
+.messenger-name a {
+    color: #fff;
+    text-decoration: none !important;
+    font-weight: normal;
+}
+.messenger-name a:hover {
+    font-weight: normal !important;
+        font-family: 'open_sanslight' !important;
+}

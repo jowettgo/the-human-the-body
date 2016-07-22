@@ -1,0 +1,149 @@
+
+.support-group-wrapper {
+    background-attachment:inherit;
+}
+.wp-center {
+    width: 100%;
+    float:left;
+    text-align: center;
+}
+.separator-interests {
+    padding-top: 20px;
+    display: inline-block;
+    color: #EEB146;
+}
+.user-sidebar-img div {
+    width: 150px;
+    height: 150px;
+    float: left;
+    border-radius: 100%;
+    overflow: hidden;
+    margin-right: 22px;
+    margin-top: -11px;
+}
+.fancybox-overlay-fixed {
+    background-color: transparent !important;
+}
+.single-galleries .fancybox-overlay-fixed {
+    background-color: #191D2F !important;
+}
+.fancybox-close {
+    display: block !important;
+}
+.single-galleries .fancybox-close {
+    display: none !important;
+}
+
+#are-you-sure {
+    background: #fff;
+    padding: 20px;
+    float: left;
+}
+
+#max-allow {
+    background: #fff;
+    padding: 20px;
+    float: left;
+}
+@media screen and (max-width: 1367px) and (min-width: 1024px) {
+    .col-20-percent {
+        width: 20%;
+    }
+}
+.events-section.secondary-subpage {
+    position: relative;
+}
+.notifications-list .user-content-details span i {
+    text-decoration: none;
+}
+.table-section.comments table tr > td > a {
+    color: #EFB148;
+}
+.editare-cont .editare-cont-section {
+    background-attachment: fixed;
+}
+.membership-baners ul li {
+    margin: 0px 33px;
+}
+.banner-box.support {
+    background-image: url('../img/support-membership.jpg');
+    background-size: cover;
+    position: relative;
+}
+
+
+.banner-box.get-togethers {
+    background-image: url('../img/get-togethers-membership.jpg');
+    background-size: cover;
+}
+.category-container a:hover {
+    text-decoration: underline;
+}
+body {
+    overflow-x: hidden;
+}
+.upload-photo.fixed {
+    position: fixed;
+    top: 15px;
+    left: auto;
+    right: 100px;
+    margin: 0 auto;
+}
+
+.causes-override {
+    background-image: url('../img/bgi/causes.png') !important;
+}
+.signs-override {
+    background-image: url('../img/bgi/symptoms.png') !important;
+}
+.advice-override {
+    background-image: url('../img/bgi/advice.png') !important;
+}
+.causes-override .divider {
+    color: #666 !important;
+}
+.causes-override .divider:before, .causes-override .divider:after {
+    border-bottom: 1px solid #666 !important;
+}
+.signs-override .divider  {
+    color: #CA7959 !important;
+}
+.signs-override .divider:before, .signs-override .divider:after {
+    border-bottom: 1px solid #CA7959 !important;
+}
+.advice-override .divider {
+    color: #96B173 !important;
+}
+.advice-override .divider:before, .advice-override .divider:after {
+    border-bottom: 1px solid #96B173 !important;
+}
+p {
+    font-family: 'open_sansregular';
+}
+.slick-initialized .slick-slide {
+    position: relative;
+}
+.darken:before {
+    content: '';
+    background: rgba(0, 0, 0, 0.7);
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+}
+
+.afectiuni .searchbox input[type=text] {
+    background: transparent;
+}
+.slide-inner-wrap:after {
+    height: 500px;
+}
+.what-can-top-inner {
+    background: rgba(0, 0, 0, 0.4);
+}
+.upload-button span {
+    height: 70px;
+    overflow: hidden;
+}

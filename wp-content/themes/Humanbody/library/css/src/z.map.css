@@ -1,0 +1,4 @@
+/* hide link to amcharts */
+.amcharts-chart-div > a {
+    display: none !important;
+}

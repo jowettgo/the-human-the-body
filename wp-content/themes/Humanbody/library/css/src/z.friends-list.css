@@ -1,0 +1,20 @@
+.friend-list-table td .friend-name {
+    text-align: left;
+    font-size:24px;
+}
+.friend-list-table td .friend-name span {
+    width: 100%;
+    display: inline-block;
+    font-size: 14px;
+}
+.friend-list-table td a {
+    color: #fff !important;
+}
+.friend-list-table td:nth-child(2) {
+    width: 54% !important;
+}
+.friend-name a:hover {
+    font-weight: bold !important;
+    font-family: 'open_sanslight' !important;
+    text-decoration: none !important;
+}

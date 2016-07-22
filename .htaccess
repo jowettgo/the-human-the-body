@@ -1,0 +1,16 @@
+# BEGIN WordPress
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+RewriteRule ^([^\d\/]+)\/([0-9]+)\/([0-9]+)-.*-.*[0-9]+..*$ ?$1$2=$3&%{QUERY_STRING}[L]
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
+# END WordPress
+# block baidu bot
+<IfModule mod_rewrite.c>
+RewriteCond %{HTTP_USER_AGENT} baidu [NC]
+RewriteRule .* - [F,L]
+</IfModule>
