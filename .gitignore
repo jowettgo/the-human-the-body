@@ -2,4 +2,5 @@
 .vagrant
 Vagrant*
 wp-content/uploads/
+wp-content/themes/Humanbody/library/node_modules/
 wp-config.php

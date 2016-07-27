@@ -353,7 +353,8 @@ $current_user = new user_info();
 								</div>
 
 								<!-- Start logo -->
-								<div class="col-md-2 col-lg-2 col-sm-3 col-xs-12 logo-wrapper">
+<!--								<div class="col-md-2 col-lg-2 col-sm-3 col-xs-12 logo-wrapper">-->
+								<div class="col-md-3 col-lg-3 col-sm-3 col-xs-12 logo-wrapper">
 									<div itemscope itemtype="http://schema.org/Organization" id="logo" >
 										<a itemprop="url" href="<?php echo get_site_url() ?>"></a>
 										<img itemprop="logo" src="<?php echo _IMG_ ?>logo.png" alt="logo"/>
@@ -362,7 +363,7 @@ $current_user = new user_info();
 								<!-- End logo -->
 
 								<!-- Start nav -->
-								<nav id="nav" class="col-md-10 col-lg-10 col-sm-9 col-xs-12">
+								<nav id="nav" class="col-md-9 col-lg-9 col-sm-9 col-xs-12">
 									<ul class="main-menu">
 										<?php if(logged_in()) :
 											$menu_object = new spinal_menu();

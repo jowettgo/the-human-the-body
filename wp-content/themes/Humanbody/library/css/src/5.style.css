@@ -463,11 +463,11 @@ html{
 }
 
 #logo{
-	max-width: 157px;
+	/*max-width: 157px;*/
 	width: 100%;
 	height: auto;
 	position: relative;
-	bottom: 19px;
+	bottom: 33px; /*19px*/
 }
 
 #logo a,
@@ -493,7 +493,8 @@ html{
 
 
 .logo-wrapper img{
-	max-width: 157px;
+	/*max-width: 157px;*/
+	max-width: 220px;
 	height: auto;
 	width: 100%;
 }
