@@ -34,9 +34,33 @@ $args = array(
     'order' => 'DESC'
 );
 $galleries = new WP_Query($args);
-$last = $galleries->posts[count($galleries->posts)-1];
+//$last = $galleries->posts[count($galleries->posts)-1];
+$first = $galleries->posts[0];
 
-$lastMeta = get_post_meta($last->ID);
+
+//$lastMeta = get_post_meta($last->ID);
+//$firstMeta = get_post_meta($first->post_title);
+
+function getDateHuman($timestamp)
+{
+    $day = (int)date('j', $timestamp);
+    switch ($day) {
+        case 1:
+            $termination = 'st';
+            break;
+        case 2:
+            $termination = 'nd';
+            break;
+        case 3:
+            $termination = 'rd';
+            break;
+        default:
+            $termination = 'th';
+            break;
+    }
+    return 'opened on '.date('j', $timestamp) . "<sup>$termination</sup> of " .date("F Y", $timestamp);
+}
+
 ?>
 
  <?php get_header(); ?>
@@ -62,15 +86,15 @@ $lastMeta = get_post_meta($last->ID);
  					<div class="description-wrapper col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
  						<div class="title-divider">
- 							<h5 class="divider"><?php echo $lastMeta['week'][0] ?></h5>
+ 							<h5 class="divider"><?php echo getDateHuman(strtotime($first->post_date)) ?></h5>
  						</div>
 
  						<h1>
  							<?php echo get_the_title($last) ?>
  						</h1>
- 						<p>We will occasionally announce a theme on the basis of which a picture gallery will be put together with the help of photos collected from you. Let's focus on primarily creating a positive, supportive, and overall friendly space for everybody (fun and good-vibes included). For these reasons, please step away from the mirror and give up those beautifying apps.</p>
+ 						<p>We will occasionally announce a theme on the basis of which a picture gallery will be put together with the help of photos collected from you. Let's focus on primarily creating a positive, supportive, and overall friendly space for everybody (fun and good-vibes included).</p>
 
- 						<a href="<?php echo get_the_permalink($last->ID) ?>" class="view-gallery">Current gallery</a>
+ 						<a href="<?php echo get_the_permalink($first->ID) ?>" class="view-gallery">Current gallery</a>
 
  					</div>
  					<!-- End description wrapper -->
@@ -123,23 +147,7 @@ $lastMeta = get_post_meta($last->ID);
  									<div class="slide-title-wrapper">
  										<h3><?php the_title() ?></h3>
  										<div class="uploaded-by">
- 											<?php
-                                            $day = (int)date('j', $timestamp);
-                                            switch ($day) {
-                                                case 1:
-                                                    $termination = 'st';
-                                                    break;
-                                                case 2:
-                                                    $termination = 'nd';
-                                                    break;
-                                                case 3:
-                                                    $termination = 'rd';
-                                                    break;
-                                                default:
-                                                    $termination = 'th';
-                                                    break;
-                                            }
-                                            echo 'opened on '.date('j', $timestamp) . "<sup>$termination</sup> of " .date("F Y", $timestamp) ?>
+ 											<?php echo getDateHuman($timestamp); ?>
  										</div>
  									</div>
  								</div>
