@@ -90,7 +90,7 @@ function getDateHuman($timestamp)
  						</div>
 
  						<h1>
- 							<?php echo get_the_title($last) ?>
+ 							<?php echo get_the_title($first) ?>
  						</h1>
  						<p>We will occasionally announce a theme on the basis of which a picture gallery will be put together with the help of photos collected from you. Let's focus on primarily creating a positive, supportive, and overall friendly space for everybody (fun and good-vibes included).</p>
 

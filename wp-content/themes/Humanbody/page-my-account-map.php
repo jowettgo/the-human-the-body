@@ -16,6 +16,7 @@ $_POST  = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
 
 
+//wp_enqueue_script( 'select2', 'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js', array('select2'), 0, true);
 
 
 /* ----------------------------------------------------------------------------------- */
@@ -25,6 +26,7 @@ logout_redirect(page('sign-in'));
 /* adds a hook to member premium pages */
 do_action('member-premium-header-hook');
 do_action('member-map');
+
 ?>
 <?php get_header() ?>
 <?php include('member/account/map.php') ?>
