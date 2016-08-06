@@ -42202,8 +42202,8 @@ button{
 /* =====  Start video Section
 --------------------------------------------------------------------------------------------------*/
 video{
-	position: fixed;
-	top: 117px;
+	/*position: fixed;*/
+	/*top: 117px;*/
 	height: 100%;
 	width: auto;
 }
@@ -49344,4 +49344,11 @@ i.delete.icon:before {
     color :#fff;
     text-decoration: underline;
 
+}
+
+
+
+#catapult-cookie-bar {
+    /*position: fixed !important;*/
+    /*top: 0 !important;*/
 }
