@@ -10,6 +10,7 @@ jQuery(document).ready(function() {
         var first_interests = $('#main-interest').val();
         var second_interests = $('#interest-categories').val();
         var third_interests = $('#interest-types').val();
+        //console.log([first_interests, second_interests, third_interests]);
         spinal_ajax({
             data: {
                 action: 'filter_users_cities',
@@ -154,8 +155,10 @@ jQuery(document).ready(function() {
 
 
     /*############################*/
-    $('.select2').select2();
-    
+    $('.select2').select2({
+        placeholder: 'Click here and begin typing...'
+    });
+
 })
 
 

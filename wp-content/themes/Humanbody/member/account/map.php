@@ -4,8 +4,8 @@ function renderInterests()
 	global $wpdb;
 	$wpdb->interests = $wpdb->prefix . 'interests_types';
 	$wpdb->interest_cat = $wpdb->prefix . 'interests_categories';
-	$items = $wpdb->get_results("SELECT * FROM $wpdb->interests as t LEFT JOIN $wpdb->interest_cat as c ON t.category_id=c.ID ORDER BY t.category_id ASC");
-	echo "<select class='select2' multiple='multiple' style='width:100%;'>";
+	$items = $wpdb->get_results("SELECT *, t.ID as iID FROM $wpdb->interests as t LEFT JOIN $wpdb->interest_cat as c ON t.category_id=c.ID ORDER BY t.category_id ASC");
+	echo "<select class='select2' multiple='multiple' style='width:100%;' placeholder='Click here an begin typing...'>";
 	$lastCat = '';
 	foreach ($items as $item) {
 		if($item->category != $lastCat) {
@@ -13,11 +13,24 @@ function renderInterests()
 			$newCat = true; $lastCat = $item->category;
 		} else { $newCat = false; }
 		if($newCat) echo "<optgroup label='$lastCat'>";
-		echo "<option value='$item->id'>$item->interest_type</option>";
+		echo "<option value='$item->iID'>$item->interest_type</option>";
 	}
 	echo "</select>";
 }
 ?>
+
+<style>
+	.select2-selection.select2-selection--multiple {
+		background: rgba(26, 26, 26, 0.3) none repeat scroll 0px 0px;
+		box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.23) inset;
+		border: 0 none;
+
+	}
+	.select2-search > input.select2-search__field {
+		border-bottom: 0 none !important;
+	}
+</style>
+
 <div id="content" class="secondary-subpage map">
 
 	<!-- cont-utilizator-section -->

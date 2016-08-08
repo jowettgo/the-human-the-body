@@ -10207,20 +10207,21 @@ jQuery(document).ready(function() {
             submit: function(e) {
                 e.preventDefault();
                 var cities = $('#cities-selected').val();
-                var first_interests = $('#main-interest').val();
-                var second_interests = $('#interest-categories').val();
-                var third_interests = $('#interest-types').val();
-                //var interests = $('');
+                // var first_interests = $('#main-interest').val();
+                // var second_interests = $('#interest-categories').val();
+                // var third_interests = $('#interest-types').val();
+                var third_interests = $('select.select2').select2("data").map(function(i){ return i.id+'-'+i.text; }).join(',');
+              //console.log([first_interests, second_interests, third_interests]);
                 var country = $('#map-country').val();
 
                 spinal_ajax({
                     data: {
                         action: 'filterusers',
                         cities: cities,
-                        first_interests: first_interests,
-                        second_interests: second_interests,
+                        // first_interests: first_interests,
+                        // second_interests: second_interests,
                         third_interests: third_interests,
-                        interests: '',
+                        // interests: interests,
                         country: country
                     },
                     success: function(data) {
