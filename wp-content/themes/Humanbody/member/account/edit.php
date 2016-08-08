@@ -5,6 +5,7 @@ $_POST  = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
 $user = wp_get_current_user();
 $userinfo = new user_info();
+
 ?>
 <div id="content" class="secondary-subpage editare-cont">
 
@@ -444,3 +445,9 @@ $userinfo = new user_info();
           <p>Maximum of 40 interests are allowed.</p>
     </div>
 </div>
+
+<script>
+
+
+
+</script>

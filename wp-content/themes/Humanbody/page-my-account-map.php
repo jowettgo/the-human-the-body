@@ -15,9 +15,6 @@ $_POST  = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 */
 
 
-wp_enqueue_script('jquery');
-wp_enqueue_script( 'select2', 'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.js');
-wp_enqueue_style('select2-style', 'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css');
 
 /* ----------------------------------------------------------------------------------- */
 /* redirect to community if user is not logged in */

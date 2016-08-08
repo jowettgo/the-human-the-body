@@ -156,7 +156,8 @@ jQuery(document).ready(function() {
 
     /*############################*/
     $('.select2').select2({
-        placeholder: 'Click here and begin typing...'
+        placeholder: 'Click here and begin typing...',
+        maximumSelectionLength: 40
     });
 
 })

@@ -150,3 +150,11 @@ p {
 
 
 
+span.select2-selection.select2-selection--multiple {
+    background: rgba(26, 26, 26, 0.3) none repeat scroll 0px 0px;
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.23) inset;
+    border: 0 none;
+}
+.select2-search > input.select2-search__field {
+    border-bottom: 0 none !important;
+}

@@ -1,35 +1,6 @@
 <?php
-function renderInterests()
-{
-	global $wpdb;
-	$wpdb->interests = $wpdb->prefix . 'interests_types';
-	$wpdb->interest_cat = $wpdb->prefix . 'interests_categories';
-	$items = $wpdb->get_results("SELECT *, t.ID as iID FROM $wpdb->interests as t LEFT JOIN $wpdb->interest_cat as c ON t.category_id=c.ID ORDER BY t.category_id ASC");
-	echo "<select class='select2' multiple='multiple' style='width:100%;' placeholder='Click here an begin typing...'>";
-	$lastCat = '';
-	foreach ($items as $item) {
-		if($item->category != $lastCat) {
-			if ($lastCat!='') echo "</optgroup>";
-			$newCat = true; $lastCat = $item->category;
-		} else { $newCat = false; }
-		if($newCat) echo "<optgroup label='$lastCat'>";
-		echo "<option value='$item->iID'>$item->interest_type</option>";
-	}
-	echo "</select>";
-}
+include_once("_functions.php");
 ?>
-
-<style>
-	.select2-selection.select2-selection--multiple {
-		background: rgba(26, 26, 26, 0.3) none repeat scroll 0px 0px;
-		box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.23) inset;
-		border: 0 none;
-
-	}
-	.select2-search > input.select2-search__field {
-		border-bottom: 0 none !important;
-	}
-</style>
 
 <div id="content" class="secondary-subpage map">
 
@@ -92,101 +63,10 @@ function renderInterests()
 
 								<div class="col-md-9 col-sm-12 col-xs-12">
 									<div class="dropdown-title">
-										INTERESTS
+										II. INTERESTS
 										<p>Select any interests or hobbies</p>
 									</div>
 									<?php renderInterests(); ?>
-									<div class="row" style="display: none;">
-										<div class="col-md-4 col-sm-4 col-xs-12">
-											<div class="dropdown-title mobile-too">
-												II. Categories
-												<!-- <?php echo $int['interest_1_title'] ?> -->
-											</div>
-										</div>
-
-										<div class="col-md-4 col-sm-4 col-xs-12">
-											<div class="dropdown-title">
-												SUBCATEGORIES
-											</div>
-										</div>
-
-										<div class="col-md-4 col-sm-4 col-xs-12">
-											<div class="dropdown-title">
-												PARTICULAR
-											</div>
-										</div>
-
-										<div class="col-md-12 col-sm-12 col-xs-12">
-											<div class="dropdown-title-desc">
-												<p>This filter applies only to premium members. Please select a category from the first box for each interest. Then, please choose a corresponding subcategory from the second box and a subsequent particular interest from the third box. Alternatively, you can search for a particular interest directly from the third box using the search bar.</p>
-												<!-- <?php echo $int['interest_1_title'] ?> -->
-											</div>
-										</div>
-
-
-										<div class="col-md-4 col-sm-4 col-xs-12">
-											<div class="dropdown-outer-wrapper">
-												<div class="ui fluid multiple search selection dropdown">
-													<div class="selected-title">Selected categories</div>
-													<input type="hidden" name="interests-1" id="main-interest"  value="">
-
-													<div class="default text">Search for interests</div>
-													<div class="menu transition visible general-list">
-														<?php
-														$ilist = csv_import_interests::get_interests();
-
-														foreach ($ilist as $interestobject) :
-
-															$value = $interestobject->interest;
-														$id = $interestobject->ID;
-														?>
-														<div class="item" data-value="<?php echo $id ?>"><?php echo $value ?></div>
-														<?php
-														endforeach;
-														?>
-													</div>
-												</div>
-											</div>
-										</div>
-
-
-										<div class="col-md-4 col-sm-4 col-xs-12">
-											<div class="dropdown-title mobile-only">
-												SUBCATEGORIES
-											</div>
-											<div class="dropdown-outer-wrapper">
-												<div class="ui fluid multiple search selection dropdown">
-													<div class="selected-title">Selected subcategories</div>
-													<input type="hidden" name="interests-2" id="interest-categories" value="">
-
-													<div class="default text">Search for interests</div>
-													<div class="menu transition visible general-list">
-
-
-													</div>
-												</div>
-											</div>
-										</div>
-
-
-										<div class="col-md-4 col-sm-4 col-xs-12">
-											<div class="dropdown-title mobile-only">
-												PARTICULAR
-											</div>
-											<div class="dropdown-outer-wrapper">
-												<div class="ui fluid multiple search selection dropdown">
-													<div class="selected-title">Selected particular interests</div>
-													<input type="hidden" name="interests-3" id="interest-types"  value="">
-
-													<div class="default text">Search for interests</div>
-													<div class="menu transition visible general-list">
-
-
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
 								</div>
 							</div>
 
