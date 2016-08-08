@@ -135,85 +135,108 @@ if (isset($user_data->caps['premium']) && !empty($user_data->caps['premium']) or
 
 					<div class="membership-baners clearfix">
 						<ul>
-							<li>
-								<div>
-									<i class="fa fa-users"></i>
-								</div>
-								<div><p>Friends list</p></div>
-							</li>
-							<li>
-								<div><i class="fa fa-envelope-o"></i></div>
-								<div><p>Messages</p></div>
-							</li>
-							<li>
-								<div><i class="fa fa-weixin"></i></div>
-								<div><p>Chat</p></div>
-							</li>
-							<li>
-								<div><i class="fa fa-map-marker"></i></div>
-								<div><p>Map</p></div>
-							</li>
-							<li>
-								<div><i class="fa"><img src="<?php bloginfo('template_url'); ?>/library/img/crowd.svg" alt="get-togheter" style="width: 100%; vertical-align: middle; max-height: 60px;"></i></div>
-								<div><p>Get-togethers</p></div>
-							</li>
-							<li>
-								<div><img src="<?php echo _IMG_ ?>lifesaver-security-sportive-tool2.png" alt="support"  style="    width: 56px; display: inline-block; margin-bottom: 43px;"/></div>
-								<div><p>Support Groups</p></div>
-							</li>
+							<?php
+								global $wpdb;
+								$items = $wpdb->get_results("SELECT * FROM $wpdb->membership ORDER BY `order` ASC");
+								$width = floor(100 / count($items));
+								foreach ($items as $item) {
+									echo "<li style='width:$width%;'>
+											<div><i class='$item->icon'></i></div>
+											<div><p>$item->title</p></div>
+										</li>
+										";
+								}
+							?>
+<!--							<li>-->
+<!--								<div><i class="fa fa-users"></i></div>-->
+<!--								<div><p>Friends list</p></div>-->
+<!--							</li>-->
+<!--							<li>-->
+<!--								<div><i class="fa fa-envelope-o"></i></div>-->
+<!--								<div><p>Messages</p></div>-->
+<!--							</li>-->
+<!--							<li>-->
+<!--								<div><i class="fa fa-weixin"></i></div>-->
+<!--								<div><p>Chat</p></div>-->
+<!--							</li>-->
+<!--							<li>-->
+<!--								<div><i class="fa fa-map-marker"></i></div>-->
+<!--								<div><p>Map</p></div>-->
+<!--							</li>-->
+<!--							<li>-->
+<!--								<div><i class="fa"><img src="--><?php //bloginfo('template_url'); ?><!--/library/img/crowd.svg" alt="get-togheter" style="width: 100%; vertical-align: middle; max-height: 60px;"></i></div>-->
+<!--								<div><p>Get-togethers</p></div>-->
+<!--							</li>-->
+<!--							<li>-->
+<!--								<div><img src="--><?php //echo _IMG_ ?><!--lifesaver-security-sportive-tool2.png" alt="support"  style="    width: 56px; display: inline-block; margin-bottom: 43px;"/></div>-->
+<!--								<div><p>Support Groups</p></div>-->
+<!--							</li>-->
 						</ul>
 					</div>
 				</div>
-				<div class="col-xs-12 col-sm-6 col-md-6 highlight">
-					<div class="banner-box support" style="height: 556px;">
-						<h3>Support Groups <img src="<?php echo _IMG_ ?>lifesaver-security-sportive-tool.png" alt="support"  style="width: 32px; position: absolute; right: 0px;"/></h3>
-						<p>Members will have access to the support groups page where they will be able to get in touch with other members and freely engage in organized discussions concerning any type of physical or psychological condition they might be facing. A qualified psychotherapist will try to mediate the discussions.</p>
-					</div>
-				</div>
-				<div class="col-xs-12 col-sm-6 col-md-6">
-					<div class="banner-box friends" style="height: 556px;">
-						<h3>FRIENDS LISTS <i class="fa fa-users"></i></h3>
-						<p>Members of the community will have the chance to create their own friends lists with other platform members.</p>
-						<p>If failing to pay for membership subscription within the stated time frame, friends lists will not be removed, but become inactive until payment is finalized.</p>
-					</div>
-				</div>
-				<div class="col-xs-12 col-sm-6 col-md-6">
-					<div class="banner-box message" style="height: 556px;">
-						<h3>MESSAGE <i class="fa fa-envelope-o"></i></h3>
-						<p>Members of the community will have the chance to communicate among themselves via private messaging.</p>
-						<p>If failing to pay for membership subscription within the stated time frame, messages will not be erased, but become inactive until payment is finalized.</p>
-					</div>
-				</div>
-				<div class="col-xs-12 col-sm-6 col-md-6">
-					<div class="banner-box chat" style="height: 556px;">
-						<h3>CHAT <i class="fa fa-weixin"></i></h3>
-						<?php
-						$page_slug ='my-account/chat';
-						$page_data = get_page_by_path($page_slug);
-						$page_id = $page_data->ID;
-						?>
-						<?php echo apply_filters('the_content', $page_data->post_content); ?>
-					</div>
-				</div>
-				<div class="col-xs-12 col-sm-6 col-md-6">
-					<div class="banner-box map" style="height: 556px;">
-						<h3>MAP <i class="fa fa-map-marker"></i></h3>
-						<?php
-						$page_slug ='map';
-						$page_data = get_page_by_path($page_slug);
-						$page_id = $page_data->ID;
-						?>
-						<?php echo apply_filters('the_content', $page_data->post_content); ?>
-					</div>
-				</div>
-				<div class="col-xs-12 col-sm-6 col-md-6">
-					<div class="banner-box get-togethers" style="height: 556px;">
-						<h3>Get-Togethers <i class="fa"><img src="<?php echo _IMG_ ?>crowd.svg" alt="get-togheter"  width="30"></i></h3>
-						<p>This section allows members to suggest real life get-togethers. Members can post a description of the meeting including organizational details, in addition to inviting others to join. Those who are interested may discuss in the comments section of each get-together.”
-Friends lists: “Members of the community will have the chance to create their own friends lists with other platform members. If failing to pay for membership subscription within the stated time frame, friends lists will not be removed, but become inactive until payment is finalized.”
-Messages: “Members of the community will have the chance to communicate among themselves via private messaging. If failing to pay for membership subscription within the stated time frame, messages will not be erased, but become inactive until payment is finalized.</p>
-					</div>
-				</div>
+
+				<?php
+				foreach ($items as $item) {
+					echo "<div class=\"col-xs-12 col-sm-6 col-md-6\">
+							<div class=\"banner-box $item->css\" style=\"height: 556px;\">
+								<h3>$item->title <i class=\"$item->icon\"></i></h3>
+								$item->content
+							</div>
+						</div>";
+				}
+				?>
+
+
+<!--				<div class="col-xs-12 col-sm-6 col-md-6 highlight">-->
+<!--					<div class="banner-box support" style="height: 556px;">-->
+<!--						<h3>Support Groups <img src="--><?php //echo _IMG_ ?><!--lifesaver-security-sportive-tool.png" alt="support"  style="width: 32px; position: absolute; right: 0px;"/></h3>-->
+<!--						<p>Members will have access to the support groups page where they will be able to get in touch with other members and freely engage in organized discussions concerning any type of physical or psychological condition they might be facing. A qualified psychotherapist will try to mediate the discussions.</p>-->
+<!--					</div>-->
+<!--				</div>-->
+<!--				<div class="col-xs-12 col-sm-6 col-md-6">-->
+<!--					<div class="banner-box friends" style="height: 556px;">-->
+<!--						<h3>FRIENDS LISTS <i class="fa fa-users"></i></h3>-->
+<!--						<p>Members of the community will have the chance to create their own friends lists with other platform members.</p>-->
+<!--						<p>If failing to pay for membership subscription within the stated time frame, friends lists will not be removed, but become inactive until payment is finalized.</p>-->
+<!--					</div>-->
+<!--				</div>-->
+<!--				<div class="col-xs-12 col-sm-6 col-md-6">-->
+<!--					<div class="banner-box message" style="height: 556px;">-->
+<!--						<h3>MESSAGE <i class="fa fa-envelope-o"></i></h3>-->
+<!--						<p>Members of the community will have the chance to communicate among themselves via private messaging.</p>-->
+<!--						<p>If failing to pay for membership subscription within the stated time frame, messages will not be erased, but become inactive until payment is finalized.</p>-->
+<!--					</div>-->
+<!--				</div>-->
+<!--				<div class="col-xs-12 col-sm-6 col-md-6">-->
+<!--					<div class="banner-box chat" style="height: 556px;">-->
+<!--						<h3>CHAT <i class="fa fa-weixin"></i></h3>-->
+<!--						--><?php
+//						$page_slug ='my-account/chat';
+//						$page_data = get_page_by_path($page_slug);
+//						$page_id = $page_data->ID;
+//						?>
+<!--						--><?php //echo apply_filters('the_content', $page_data->post_content); ?>
+<!--					</div>-->
+<!--				</div>-->
+<!--				<div class="col-xs-12 col-sm-6 col-md-6">-->
+<!--					<div class="banner-box map" style="height: 556px;">-->
+<!--						<h3>MAP <i class="fa fa-map-marker"></i></h3>-->
+<!--						--><?php
+//						$page_slug ='map';
+//						$page_data = get_page_by_path($page_slug);
+//						$page_id = $page_data->ID;
+//						?>
+<!--						--><?php //echo apply_filters('the_content', $page_data->post_content); ?>
+<!--					</div>-->
+<!--				</div>-->
+<!--				<div class="col-xs-12 col-sm-6 col-md-6">-->
+<!--					<div class="banner-box get-togethers" style="height: 556px;">-->
+<!--						<h3>Get-Togethers <i class="fa"><img src="--><?php //echo _IMG_ ?><!--crowd.svg" alt="get-togheter"  width="30"></i></h3>-->
+<!--						<p>This section allows members to suggest real life get-togethers. Members can post a description of the meeting including organizational details, in addition to inviting others to join. Those who are interested may discuss in the comments section of each get-together.”-->
+<!--Friends lists: “Members of the community will have the chance to create their own friends lists with other platform members. If failing to pay for membership subscription within the stated time frame, friends lists will not be removed, but become inactive until payment is finalized.”-->
+<!--Messages: “Members of the community will have the chance to communicate among themselves via private messaging. If failing to pay for membership subscription within the stated time frame, messages will not be erased, but become inactive until payment is finalized.</p>-->
+<!--					</div>-->
+<!--				</div>-->
 				<div class="col-xs-12 col-sm-12 col-md-12">
 					<div id="pay" class="payment-method clearfix">
 						

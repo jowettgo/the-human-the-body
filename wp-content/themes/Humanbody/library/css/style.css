@@ -40536,7 +40536,7 @@ html.ios body {
 
 .membership-baners ul li{
 	display: inline-block;
-	margin: 0px 57px;
+	/*margin: 0px 57px;*/
 }
 
 .membership-baners ul li .fa{

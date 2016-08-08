@@ -10210,6 +10210,7 @@ jQuery(document).ready(function() {
                 var first_interests = $('#main-interest').val();
                 var second_interests = $('#interest-categories').val();
                 var third_interests = $('#interest-types').val();
+                //var interests = $('');
                 var country = $('#map-country').val();
 
                 spinal_ajax({
@@ -10219,6 +10220,7 @@ jQuery(document).ready(function() {
                         first_interests: first_interests,
                         second_interests: second_interests,
                         third_interests: third_interests,
+                        interests: '',
                         country: country
                     },
                     success: function(data) {

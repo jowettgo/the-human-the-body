@@ -10,101 +10,46 @@
  * @subpackage Hb_Membership_Features/admin
  */
 
-/**
- * The admin-specific functionality of the plugin.
- *
- * Defines the plugin name, version, and two examples hooks for how to
- * enqueue the admin-specific stylesheet and JavaScript.
- *
- * @package    Hb_Membership_Features
- * @subpackage Hb_Membership_Features/admin
- * @author     iQuatic <contact@iquatic.com>
- */
 class Hb_Membership_Features_Admin {
 
-	/**
-	 * The ID of this plugin.
-	 *
-	 * @since    1.0.0
-	 * @access   private
-	 * @var      string    $plugin_name    The ID of this plugin.
-	 */
+
 	private $plugin_name;
-
-	/**
-	 * The version of this plugin.
-	 *
-	 * @since    1.0.0
-	 * @access   private
-	 * @var      string    $version    The current version of this plugin.
-	 */
 	private $version;
+	public $items;
+	public $base_url;
 
-	/**
-	 * Initialize the class and set its properties.
-	 *
-	 * @since    1.0.0
-	 * @param      string    $plugin_name       The name of this plugin.
-	 * @param      string    $version    The version of this plugin.
-	 */
+
 	public function __construct( $plugin_name, $version ) {
-
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
 
+		global $wpdb;
+		$wpdb->membership = $wpdb->prefix . 'hb_membership_features';
+		$this->items = $wpdb->get_results("SELECT * FROM $wpdb->membership ORDER BY `order` ASC");
+
+		$this->base_url = get_site_url() . '/wp-admin/admin.php?page=hb-membership-features';
+
+//		add_action( 'wp_ajax_nopriv_post', array( $this, 'post' ) );
+//		add_action( 'wp_ajax_post', array( $this, 'post' ) );
 	}
 
-	/**
-	 * Register the stylesheets for the admin area.
-	 *
-	 * @since    1.0.0
-	 */
+
 	public function enqueue_styles() {
-
-		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in Hb_Membership_Features_Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The Hb_Membership_Features_Loader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
-
+		wp_enqueue_style( 'prefix-font-awesome', '//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css', array(), '4.0.3' );
+        wp_enqueue_style( 'bootstrap', '//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' );
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/hb-membership-features-admin.css', array(), $this->version, 'all' );
-
 	}
 
-	/**
-	 * Register the JavaScript for the admin area.
-	 *
-	 * @since    1.0.0
-	 */
+
 	public function enqueue_scripts() {
-
-		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in Hb_Membership_Features_Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The Hb_Membership_Features_Loader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
-
         wp_enqueue_script('jquery-ui-sortable'); //https://developer.wordpress.org/reference/functions/wp_enqueue_script/
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/hb-membership-features-admin.js', array( 'jquery' ), $this->version, false );
-
+        wp_enqueue_script( 'bootstrap-js', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js' );
+        wp_enqueue_script( 'tinymce-js', 'https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.4.1/tinymce.min.js' );
+//        wp_enqueue_script('jquery-ui-datepicker');
+        wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/hb-membership-features-admin.js', array( 'jquery' ), $this->version, false );
 	}
 
 
-    /**
-     * Adds the admin menu for this plugin
-     */
     public function display_admin_menu() {
         //TODO: add a root "Human Body" admin menu to add into all site specific menus
 		add_menu_page(
@@ -119,34 +64,89 @@ class Hb_Membership_Features_Admin {
 	}
 
 
-    /**
-     * Render the actual admin page for this plugin
-     */
     public function display_admin_page() {
-        add_action( 'admin_post_hb-membership-features', 'post' );
-        $action = empty( $_REQUEST['action'] ) ? '' : $_REQUEST['action'];
-        if(empty($action)) {
-            $this->get();
-        } else {
-            $this->post();
-        }
-	}
+        echo $this->routes();
+    }
+
+    public function routes()
+    {
+        //TODO: protect routes, post&delete
+        if($_REQUEST['edit']) return $this->edit();
+        if($_REQUEST['delete']) return $this->delete();
+        if($_REQUEST['add']) return $this->add();
+
+        if(isset($_REQUEST['order'])) $this->updateOrder();
+        if(isset($_POST['action']) & $_POST['action']=='POST_ITEM') return $this->postItem();
+
+        return $this->get();
+    }
 
 
     public function get()
     {
-        global $wpdb;
-        $wpdb->membership = $wpdb->prefix . 'hb_membership_features';
-        $results = $wpdb->get_results("SELECT * FROM $wpdb->membership ORDER BY `order` ASC");
-
+		$results = $this->items;
+		$base_url = $this->base_url;
         include 'partials/hb-membership-features-admin-display.php';
-
     }
 
 
-    public function post()
+    public function postItem()
     {
-        echo 'aaaa';
+        global $wpdb;
+        $wpdb->membership = $wpdb->prefix . 'hb_membership_features';
+        $item = [
+            'title' => $_POST['item_title'],
+            'link' => isset($_POST['item_link']) & $_POST['item_link']!='' ? $_POST['item_link'] : null,
+            'content' => isset($_POST['item_content']) & $_POST['item_content']!='' ? $_POST['item_content'] : null,
+            'icon' => isset($_POST['item_icon']) & $_POST['item_icon']!='' ? $_POST['item_icon'] : null
+        ];
+        if(isset($_POST['item_id']) & $_POST['item_id'] != '') {
+            $wpdb->update($wpdb->membership, $item, ['id'=>$_POST['item_id']]);
+        } else {
+            $wpdb->insert($wpdb->membership, $item);
+        }
+
+        wp_redirect($this->base_url);
+    }
+
+
+
+	public function edit()
+	{
+        global $wpdb;
+        $id = $_REQUEST['edit'];
+        $item = $wpdb->get_row("SELECT * FROM $wpdb->membership WHERE id=$id");
+        $base_url = $this->base_url;
+		include 'partials/edit_form.php';
+	}
+
+	public function delete()
+	{
+        $id = $_REQUEST['delete'];
+		echo "delete $id";
+        global $wpdb;
+        $wpdb->delete($wpdb->prefix . 'hb_membership_features', array( 'ID' => $id ) );
+        wp_redirect($this->base_url);
+	}
+
+
+    protected function updateOrder() {
+        global $wpdb;
+        $order = $_REQUEST['order'];
+        $wpdb->membership = $wpdb->prefix . 'hb_membership_features';
+        $ord = explode(',', $order);
+        $i = 1;
+        foreach ($ord as $o) {
+            $wpdb->update($wpdb->membership, ['order'=>$i], ['id'=>$o]);
+            $i += 1;
+        }
+    }
+
+    public function add()
+    {
+        $item = null;
+        $base_url = $this->base_url;
+        include 'partials/edit_form.php';
     }
 
 

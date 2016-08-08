@@ -1,3 +1,23 @@
+<?php
+function renderInterests()
+{
+	global $wpdb;
+	$wpdb->interests = $wpdb->prefix . 'interests_types';
+	$wpdb->interest_cat = $wpdb->prefix . 'interests_categories';
+	$items = $wpdb->get_results("SELECT * FROM $wpdb->interests as t LEFT JOIN $wpdb->interest_cat as c ON t.category_id=c.ID ORDER BY t.category_id ASC");
+	echo "<select class='select2' multiple='multiple' style='width:100%;'>";
+	$lastCat = '';
+	foreach ($items as $item) {
+		if($item->category != $lastCat) {
+			if ($lastCat!='') echo "</optgroup>";
+			$newCat = true; $lastCat = $item->category;
+		} else { $newCat = false; }
+		if($newCat) echo "<optgroup label='$lastCat'>";
+		echo "<option value='$item->id'>$item->interest_type</option>";
+	}
+	echo "</select>";
+}
+?>
 <div id="content" class="secondary-subpage map">
 
 	<!-- cont-utilizator-section -->
@@ -11,7 +31,7 @@
 				<div class="cont-wrapper">
 					<div class="row">
 						<?php
-
+							
 
 						?>
 						<!-- start profile -->
@@ -56,12 +76,14 @@
 										</div>
 									</div>
 								</div>
-								<?php
 
-
-								?>
 								<div class="col-md-9 col-sm-12 col-xs-12">
-									<div class="row">
+									<div class="dropdown-title">
+										INTERESTS
+										<p>Select any interests or hobbies</p>
+									</div>
+									<?php renderInterests(); ?>
+									<div class="row" style="display: none;">
 										<div class="col-md-4 col-sm-4 col-xs-12">
 											<div class="dropdown-title mobile-too">
 												II. Categories

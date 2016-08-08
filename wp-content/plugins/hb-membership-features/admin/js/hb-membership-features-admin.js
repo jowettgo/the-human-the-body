@@ -1,5 +1,6 @@
 (function( $ ) {
 	'use strict';
+	$ = jQuery.noConflict();
 
 	/**
 	 * All of the code for your admin-facing JavaScript source
@@ -29,10 +30,36 @@
 	 * practising this, we should strive to set a better example in our own work.
 	 */
 
-	jQuery( function() {
-		jQuery( "#sortable" ).sortable();
-		jQuery( "#sortable" ).disableSelection();
+	$( function() {
+		$( "#sortable" ).sortable();
+		$( "#sortable" ).disableSelection();
+
+		$('#sortable-save').click(function() {
+			var itemsOrder = [];
+			$("#sortable li").each(function(i) { itemsOrder.push($(this).attr('data-id')); });
+
+			$toggleSortableAjax(true);
+			$.post(window.location.href, {
+				order: itemsOrder.join(','),
+				type: 'POST',
+				data: {action: 'POST'}
+			})
+			.success(function(data) { $toggleSortableAjax(false); })
+			.error(function(data) { console.log('Error: ' + data); });
+		});
+
+		var $toggleSortableAjax = function($hide) {
+			$('#sortable-save').prop("disabled", $hide);
+			$('#sortable-icon').removeClass($hide?'fa-floppy-o':'fa-spinner').addClass(!$hide?'fa-floppy-o':'fa-spinner');
+			$('#sortable-label').text($hide?'Saving...':'Save Order');
+			if(!$hide) $('#sortable-result').fadeIn('fast').fadeOut(1500);
+		};
+
+		tinymce.init({ selector:'textarea', menubar: false, statusbar: false });
+
+
 	} );
+
 
 
 

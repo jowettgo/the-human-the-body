@@ -62,9 +62,9 @@
 .editare-cont .editare-cont-section {
     background-attachment: fixed;
 }
-.membership-baners ul li {
-    margin: 0px 33px;
-}
+/*.membership-baners ul li {*/
+    /*margin: 0px 33px;*/
+/*}*/
 .banner-box.support {
     background-image: url('../img/support-membership.jpg');
     background-size: cover;

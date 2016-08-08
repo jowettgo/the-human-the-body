@@ -15,20 +15,39 @@
 
 <!-- This file should primarily consist of HTML with a little bit of PHP. -->
 
-<div class="wrap">HB Membership Features Admin Display</div>
+<div class="wrap container">
+    <h2>Membership Features <small>Human-Body</small></h2>
 
-<?php
-//    var_dump($results);
-    var_dump($_REQUEST['action']);
-?>
-<ul id="sortable">
-    <?php
-        foreach ($results as $res) {
-            echo "<li class=\"ui-state-default\"><i class=\"fa fa-bars\" aria-hidden=\"true\"></i>$res->title</li>";
-        }
-    ?>
-</ul>
+    <div class="row">
+        <div class="col-md-offset-3 col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Reorder boxes</h3>
+                </div>
+                <div class="panel-body">
+                    <ul id="sortable">
+                        <?php
+                        foreach ($results as $res) {
+                            $edit_url =  $base_url . "&edit=$res->id";
+                            $delete_url = $base_url . "&delete=$res->id";
+                            echo "<li class='ui-state-default' data-id='$res->id'>
+                                <i class='fa fa-ellipsis-v' style='padding-right:10px;'></i> $res->title
+                                <div class='pull-right'><a href='$edit_url'><i class='fa fa-pencil-square'></i></a> <a href='$delete_url'><i class='fa fa-minus-square delete'></i></a></div>
+                            </li>";
+                        }
+                        ?>
+                    </ul>
+                </div>
+                <div class="panel-footer">
+                    <button type="button" id="sortable-save" class="btn btn-primary"><i class="fa fa-floppy-o" id="sortable-icon"></i> <span id="sortable-label">Save Order</span></button><span id="sortable-result" class="text-muted" style="display:none;"> Saved.</span>
+                    <a href="<?php echo $base_url . '&add=item' ?>" id="item-add" class="btn btn-info pull-right"><i class="fa fa-plus-square-o"></i> Add Box</a>
+                </div>
+            </div>
+        </div>
 
-<form action="" method="POST">
-    <input type="submit" value="Submit">
-</form>
+    </div>
+
+
+
+
+</div>
