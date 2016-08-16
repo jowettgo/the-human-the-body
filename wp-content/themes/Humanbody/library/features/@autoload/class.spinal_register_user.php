@@ -70,24 +70,27 @@ class spinal_register_user
 
 
 
-                    $body_mail = '<!DOCTYPE HTML>
-                    <html>
-                    <head>
-                      <title>Humanbody account validation</title>
-                    </head>
-                    <body>
-                      <h1>Humanbody account validation</h1>
-                      <br><br>
-                      <p>
-                       Hello, you registered on humanbody website with this email. Please validate your account here:
-                       </p>
+//                    $body_mail = '<!DOCTYPE HTML>
+//                    <html>
+//                    <head>
+//                      <title>Humanbody account validation</title>
+//                    </head>
+//                    <body>
+//                      <h1>Humanbody account validation</h1>
+//                      <br><br>
+//                      <p>
+//                       Hello, you registered on humanbody website with this email. Please validate your account here:
+//                       </p>
+//
+//                       <p><a href="'.$activation_link.'">'.$activation_link.'</a></p>
+//                    </body>
+//                    </html>
+//                    ';
+                    $body_mail = file_get_contents(ABSPATH.'/wp-content/themes/Humanbody/member/emails/activation.html');
+                    $body_mail = str_ireplace('##USERNAME##', $_POST['fullname'], $body_mail);
+                    $body_mail = str_ireplace('##ACTIVATION##', $activation_link, $body_mail);
 
-                       <p><a href="'.$activation_link.'">'.$activation_link.'</a></p>
-                    </body>
-                    </html>
-                    ';                    
-
-                    wp_mail( $_POST['email'], 'Humanbody account activation', $body_mail, $headers );
+                    wp_mail( $_POST['email'], 'Account activation', $body_mail, $headers );
 
                     return $user_id;
                     /* and we`re out */
