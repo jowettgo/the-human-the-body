@@ -18,6 +18,7 @@ class spinal_register_user
     public function register()
     {
 
+
         /* register email */
         $email = isset($_POST['user_email']) ? $_POST['user_email'] : false;
         /* check if the user exists in the database to begin with */
@@ -63,7 +64,7 @@ class spinal_register_user
                     );
                     $this->add_meta($data);
 
-                    $headers  = "From: " . 'no-reply@thehumanthebody.com' . "\r\n"; 
+                    $headers  = "From: The Human The Body " . 'no-reply@thehumanthebody.com' . "\r\n";
                     $headers .= "Reply-To: ". 'no-reply@thehumanthebody.com' . "\r\n"; 
                     $headers .= "MIME-Version: 1.0\r\n"; 
                     $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n"; 
