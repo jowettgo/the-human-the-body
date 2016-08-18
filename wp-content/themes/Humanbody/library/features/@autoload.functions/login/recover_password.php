@@ -151,7 +151,7 @@ class spinal_recover_password
         $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
 
-        if ( $message && !wp_mail( $user_email, wp_specialchars_decode( $title ), $message ) )
+        if ( $message && !wp_mail( $user_email, wp_specialchars_decode( $title ), $message, $headers ) )
     		wp_die( __('The e-mail could not be sent.') . "<br />\n" . __('Possible reason: your host may have disabled the mail() function.') );
         /* all good and fancy */
     	return true;
