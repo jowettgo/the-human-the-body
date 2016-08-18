@@ -145,11 +145,10 @@ class spinal_recover_password
     	 */
     	$message = apply_filters( 'retrieve_password_message', $message, $key, $user_login, $user_data );
 
-        $headers  = "From: The Human The Body " . 'no-reply@thehumanthebody.com' . "\r\n";
-        $headers .= "Reply-To: ". 'no-reply@thehumanthebody.com' . "\r\n";
-        $headers .= "MIME-Version: 1.0\r\n";
-        $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
-
+        $headers[] = "From: TheHumanTheBody " . 'no-reply@thehumanthebody.com' . "\r\n";
+        $headers[] = "Reply-To: ". 'no-reply@thehumanthebody.com' . "\r\n";
+        $headers[] = "MIME-Version: 1.0\r\n";
+        $headers[] = "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
         if ( $message && !wp_mail( $user_email, wp_specialchars_decode( $title ), $message, $headers ) )
     		wp_die( __('The e-mail could not be sent.') . "<br />\n" . __('Possible reason: your host may have disabled the mail() function.') );
