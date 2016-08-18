@@ -143,15 +143,19 @@ class spinal_recover_password
     	 * @param string  $user_login The username for the user.
     	 * @param WP_User $user_data  WP_User object.
     	 */
-    	$message = apply_filters( 'retrieve_password_message', $message, $key, $user_login, $user_data );
+    	//$message = apply_filters( 'retrieve_password_message', $message, $key, $user_login, $user_data );
 
         $headers[] = "From: TheHumanTheBody " . 'no-reply@thehumanthebody.com' . "\r\n";
         $headers[] = "Reply-To: ". 'no-reply@thehumanthebody.com' . "\r\n";
         $headers[] = "MIME-Version: 1.0\r\n";
         $headers[] = "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
-        if ( $message && !wp_mail( $user_email, wp_specialchars_decode( $title ), $message ) )
-    		wp_die( __('The e-mail could not be sent.') . "<br />\n" . __('Possible reason: your host may have disabled the mail() function.') );
+        if ( $message && !wp_mail( $user_email, wp_specialchars_decode( $title ), $message ) ) {
+            $msg = __('The e-mail could not be sent.') . "<br />\n";
+            $msg .= __('Possible reason: your host may have disabled the mail() function.') . "<br />\n";
+            $msg .= $message . "<br />\n";
+            wp_die( $msg );
+        }
         /* all good and fancy */
     	return true;
     }
