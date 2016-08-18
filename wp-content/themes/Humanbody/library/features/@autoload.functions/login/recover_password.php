@@ -145,12 +145,16 @@ class spinal_recover_password
     	 */
     	//$message = apply_filters( 'retrieve_password_message', $message, $key, $user_login, $user_data );
 
-        $headers[] = "From: TheHumanTheBody " . 'no-reply@thehumanthebody.com' . "\r\n";
-        $headers[] = "Reply-To: ". 'no-reply@thehumanthebody.com' . "\r\n";
-        $headers[] = "MIME-Version: 1.0\r\n";
-        $headers[] = "Content-Type: text/html; charset=ISO-8859-1\r\n";
+        //$headers[] = "From: TheHumanTheBody " . '<no-reply@thehumanthebody.com>' . "\r\n";
+        //$headers[] = "Reply-To: ". 'no-reply@thehumanthebody.com' . "\r\n";
+        //$headers[] = "MIME-Version: 1.0\r\n";
+        //$headers[] = "Content-Type: text/html; charset=ISO-8859-1\r\n";
+        add_filter( 'wp_mail_from_name', function( $name ) { return 'The Human The Body'; });
+        add_filter( 'wp_mail_from', function( $email ) { return 'no-reply@thehumanthebody.com'; });
+        add_filter( 'wp_mail_content_type', function( $content_type ) { return 'text/html'; });
+        add_filter( 'wp_mail_charset', function( $charset ) { return 'UTF-32'; });
 
-        if ( $message && !wp_mail( $user_email, wp_specialchars_decode( $title ), $message, $headers ) ) {
+        if ( $message && !wp_mail( $user_email, wp_specialchars_decode( $title ), $message ) ) {
             $msg = __('The e-mail could not be sent.') . "<br />\n";
             $msg .= __('Possible reason: your host may have disabled the mail() function.') . "<br />\n";
             $msg .= $message . "<br />\n";
