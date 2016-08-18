@@ -109,12 +109,17 @@ class spinal_recover_password
     	$hashed = time() . ':' . $wp_hasher->HashPassword( $key );
     	$wpdb->update( $wpdb->users, array( 'user_activation_key' => $hashed ), array( 'user_login' => $user_login ) );
 
-    	$message = __('Someone requested a password reset on this account:') . "\r\n\r\n";
-    	$message .= network_home_url( '/' ) . "\r\n\r\n";
-    	$message .= sprintf(__('Username: %s'), $user_login) . "\r\n\r\n";
-    	$message .= __('If this was a mistake, just ignore this email and nothing will happen.') . "\r\n\r\n";
-    	$message .= __('To reset your password, follow the link below:') . "\r\n\r\n";
-    	$message .= "<a href='".page('reset-password')."?action=rp&key=$key&login=" . rawurlencode($user_login) . "' target='_blank'>Reset Password</a>\r\n";
+    	//$message = __('Someone requested a password reset on this account:') . "\r\n\r\n";
+    	//$message .= network_home_url( '/' ) . "\r\n\r\n";
+    	//$message .= sprintf(__('Username: %s'), $user_login) . "\r\n\r\n";
+    	//$message .= __('If this was a mistake, just ignore this email and nothing will happen.') . "\r\n\r\n";
+    	//$message .= __('To reset your password, follow the link below:') . "\r\n\r\n";
+    	//$message .= "<a href='".page('reset-password')."?action=rp&key=$key&login=" . rawurlencode($user_login) . "' target='_blank'>Reset Password</a>\r\n";
+
+        $message = file_get_contents(ABSPATH.'/wp-content/themes/Humanbody/member/emails/recover.html');
+        $message = str_ireplace('##USERNAME##', $user_login, $message);
+        $recover_link = "<a href='".page('reset-password')."?action=rp&key=$key&login=" . rawurlencode($user_login) . "' target='_blank'>Reset Password</a>";
+        $message = str_ireplace('##RESET##', $recover_link, $message);
 
     	if ( is_multisite() )
     		$blogname = $GLOBALS['current_site']->site_name;
