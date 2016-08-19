@@ -579,7 +579,7 @@ function check_cron_times (){
 flush_rewrite_rules();
 
 
-add_action('wp_footer', 'add_googleanalytics');
+add_action('wp_head', 'add_googleanalytics');
 function add_googleanalytics() {
     echo "
             <script>
