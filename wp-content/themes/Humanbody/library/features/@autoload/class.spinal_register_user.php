@@ -91,7 +91,11 @@ class spinal_register_user
                     $body_mail = str_ireplace('##USERNAME##', $_POST['fullname'], $body_mail);
                     $body_mail = str_ireplace('##ACTIVATION##', $activation_link, $body_mail);
 
-                    wp_mail( $_POST['email'], 'Account activation', $body_mail, $headers );
+                    if ( !wp_mail( $_POST['email'], 'Account activation', $body_mail, $headers ) ) {
+                        $msg = __('The e-mail could not be sent.') . "<br />\n";
+                        $msg .= __('Possible reason: your host may have disabled the mail() function.') . "<br />\n";
+                        wp_die( $msg );
+                    }
 
                     return $user_id;
                     /* and we`re out */
