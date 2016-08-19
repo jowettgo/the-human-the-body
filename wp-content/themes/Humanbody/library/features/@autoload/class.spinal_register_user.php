@@ -64,12 +64,11 @@ class spinal_register_user
                     );
                     $this->add_meta($data);
 
-                    $headers  = "From: The Human The Body " . 'no-reply@thehumanthebody.com' . "\r\n";
-                    $headers .= "Reply-To: ". 'no-reply@thehumanthebody.com' . "\r\n"; 
-                    $headers .= "MIME-Version: 1.0\r\n"; 
-                    $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n"; 
-
-
+//                    $headers  = "From: The Human The Body " . 'no-reply@thehumanthebody.com' . "\r\n";
+//                    $headers .= "Reply-To: ". 'no-reply@thehumanthebody.com' . "\r\n";
+//                    $headers .= "MIME-Version: 1.0\r\n";
+//                    $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+//
 
 //                    $body_mail = '<!DOCTYPE HTML>
 //                    <html>
@@ -91,7 +90,12 @@ class spinal_register_user
                     $body_mail = str_ireplace('##USERNAME##', $_POST['fullname'], $body_mail);
                     $body_mail = str_ireplace('##ACTIVATION##', $activation_link, $body_mail);
 
-                    if ( !wp_mail( $_POST['email'], 'Account activation', $body_mail, $headers ) ) {
+                    add_filter( 'wp_mail_from_name', function( $name ) { return 'The Human The Body'; });
+                    add_filter( 'wp_mail_from', function( $email ) { return 'no-reply@thehumanthebody.com'; });
+                    add_filter( 'wp_mail_content_type', function( $content_type ) { return 'text/html'; });
+                    add_filter( 'wp_mail_charset', function( $charset ) { return 'UTF-32'; });
+
+                    if ( !wp_mail( $_POST['email'], 'Account activation', $body_mail ) ) {
                         $msg = __('The e-mail could not be sent.') . "<br />\n";
                         $msg .= __('Possible reason: your host may have disabled the mail() function.') . "<br />\n";
                         wp_die( $msg );
