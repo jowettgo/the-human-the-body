@@ -597,5 +597,17 @@ function add_googleanalytics() {
 }
 
 
+//function mailtrap($phpmailer) {
+//    $phpmailer->isSMTP();
+//    $phpmailer->Host = 'mailtrap.io';
+//    $phpmailer->SMTPAuth = true;
+//    $phpmailer->Port = 2525;
+//    $phpmailer->Username = '44d625d88b0153';
+//    $phpmailer->Password = '87a510ff6694ef';
+//}
+//
+//add_action('phpmailer_init', 'mailtrap');
+
+
 ?>
 

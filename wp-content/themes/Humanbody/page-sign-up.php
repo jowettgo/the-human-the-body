@@ -66,7 +66,6 @@ $userID = $signup->register();
 								<br>An email has been sent to you with detailed instructions on how to activate it.</p>
 							<?php
 						} else {
-
 						?>
 
 						<!-- start form -->
