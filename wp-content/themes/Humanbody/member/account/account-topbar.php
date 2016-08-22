@@ -59,7 +59,7 @@ $paypal_pending = get_user_meta($user->ID, 'paypal_pending', true);
 <?php endif; ?>
 
 
-<div class="user-sidebar-profile clearfix">
+<div class="user-sidebar-profile clearfix" style="padding-bottom:21px;">
     <div class="user-sidebar-top col-sm-6 col-md-6">
         <div class="user-sidebar-img" style="height: 111px;">
             <div>
@@ -86,7 +86,7 @@ $paypal_pending = get_user_meta($user->ID, 'paypal_pending', true);
         ?>
         <span><?php echo implode(',', $arr); ?></span>
         <a class="edit" href="<?php echo page('my-account-edit') ?>"><i class="fa fa-cog"></i>Edit profile</a>
-
+<!-- 21padding bottom -->
     </div>
     <div class="user-sidebar-cont col-sm-6  col-md-6">
         <div class="row">
@@ -113,26 +113,37 @@ $paypal_pending = get_user_meta($user->ID, 'paypal_pending', true);
             </ul>
         </div>
     </div>
+	<div class="col-sm-12 col-md-12 text-center">
+		<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+			<input type="hidden" name="cmd" value="_s-xclick">
+			<input type="hidden" name="hosted_button_id" value="JVH7AHP5BGJDW">
+			<input type="hidden" name="custom" value="ksx-<?php echo $user->ID; ?>">
+<!--			<a href="#" class="" name="submit">Make a donation</a>-->
+			<input type="image" src="<?php bloginfo('stylesheet_directory'); ?>/library/img/make-a-donation.png" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+			<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+		</form>
+	</div>
+
 </div>
 
-<div class="alert alert-donate">
-	<div class="row">
-		<div class="col-md-4">
-			<p>Make a donation<p>
-		</div>
-		
-		<div class="col-md-2">
+<!--<div class="alert alert-donate">-->
+<!--	<div class="row">-->
+<!--		<div class="col-md-4">-->
+<!--			<p>Make a donation<p>-->
+<!--		</div>-->
+<!--		-->
+<!--		<div class="col-md-2">-->
 			<?php /* paypal donation live */ ?>
-			<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-				<input type="hidden" name="cmd" value="_s-xclick">
-				<input type="hidden" name="hosted_button_id" value="JVH7AHP5BGJDW">
-			 	<input type="hidden" name="custom" value="ksx-<?php echo $user->ID; ?>">
-				<input type="image" src="<?php bloginfo('stylesheet_directory'); ?>/library/img/suport.png" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-				<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-			</form>
-
+<!--			<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">-->
+<!--				<input type="hidden" name="cmd" value="_s-xclick">-->
+<!--				<input type="hidden" name="hosted_button_id" value="JVH7AHP5BGJDW">-->
+<!--			 	<input type="hidden" name="custom" value="ksx---><?php //echo $user->ID; ?><!--">-->
+<!--				<input type="image" src="--><?php //bloginfo('stylesheet_directory'); ?><!--/library/img/suport.png" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">-->
+<!--				<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">-->
+<!--			</form>-->
+<!---->
 			<?php /* paypal donation sandbox */
-			/*			
+			/*
 			<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_top">
 				<input type="hidden" name="cmd" value="_s-xclick">
 				<input type="hidden" name="hosted_button_id" value="EWUC4LNPP42UE">
@@ -141,9 +152,9 @@ $paypal_pending = get_user_meta($user->ID, 'paypal_pending', true);
 				<img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
 			</form>
 			*/ ?>
-
-		</div>	
-	</div>
+<!---->
+<!--		</div>	-->
+<!--	</div>-->
 
 	<?php 
 	$paypal_donate = get_user_meta($user->ID, 'paypal_donate', true);
@@ -159,7 +170,7 @@ $paypal_pending = get_user_meta($user->ID, 'paypal_pending', true);
 		
 	
 
-</div>
+<!--</div>-->
 
 
 

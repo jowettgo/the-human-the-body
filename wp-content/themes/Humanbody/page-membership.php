@@ -63,48 +63,42 @@ if (isset($user_data->caps['premium']) && !empty($user_data->caps['premium']) or
 
 			<div class="row">
 				<div class="description-wrapper col-lg-12 col-md-12 col-sm-12 col-xs-12">
-
 					<h1><?php the_title() ?></h1>
 
 					<p>
 						<?php the_content() ?>
 					</p>
-					<div class="donation-method month_price col-xs-12 col-sm-6 col-md-6 clearfix">
-						
-						<?php echo apply_filters('the_content', $custom_fields['ba_month_price'][0]) ?>
-
-						<div class="col-md-8">
-							<p style="margin:0; text-transform: none; text-align: right; padding-top: 7px; padding-right: 0" >Make a donation</p>
+					<div class="row">
+						<div class="donation-method month_price col-xs-12 col-sm-6 col-md-6 clearfix">
+							<?php echo apply_filters('the_content', $custom_fields['ba_month_price'][0]) ?>
+							<div class="col-md-4 col-md-offset-4">
+								<?php /* paypal donation live */ ?>
+								<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+									<input type="hidden" name="cmd" value="_s-xclick">
+									<input type="hidden" name="hosted_button_id" value="JVH7AHP5BGJDW">
+									<input type="hidden" name="custom" value="ksx-<?php echo $user->ID; ?>">
+									<input type="image" src="<?php bloginfo('stylesheet_directory'); ?>/library/img/make-a-donation.png" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+									<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+								</form>
+								<?php /* paypal donation sandbox */
+								/*
+                                <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                                    <input type="hidden" name="cmd" value="_s-xclick">
+                                    <input type="hidden" name="hosted_button_id" value="EWUC4LNPP42UE">
+                                    <input type="hidden" name="custom" value="ksx-<?php echo $user->ID; ?>">
+                                    <input type="image"  src="https://www.sandbox.paypal.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                                    <img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                                </form>
+                                */ ?>
+							</div>
 						</div>
-						
-						<div class="col-md-4">
-							<?php /* paypal donation live */ ?>
-							<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-								<input type="hidden" name="cmd" value="_s-xclick">
-								<input type="hidden" name="hosted_button_id" value="JVH7AHP5BGJDW">
-							 	<input type="hidden" name="custom" value="ksx-<?php echo $user->ID; ?>">
-								<input type="image" src="<?php bloginfo('stylesheet_directory'); ?>/library/img/suport.png" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-								<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-							</form>
-				
-							<?php /* paypal donation sandbox */
-							/*			
-							<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_top">
-								<input type="hidden" name="cmd" value="_s-xclick">
-								<input type="hidden" name="hosted_button_id" value="EWUC4LNPP42UE">
-								<input type="hidden" name="custom" value="ksx-<?php echo $user->ID; ?>">
-								<input type="image"  src="https://www.sandbox.paypal.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-								<img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
-							</form>
-							*/ ?>
-						</div>	
-					</div>	
-					<div class="get-membership col-xs-12 col-sm-6 col-md-6">
-						<?php if(!is_premium()) : ?>
-							<a href="<?php echo get_page_link('156'); ?>" class="scroll-down">Get free membership</a>
-						<?php else : ?>
-							<a href="#pay" class="scroll-down">Get free membership</a>
-	                    <?php endif; ?>
+						<div class="get-membership col-xs-12 col-sm-6 col-md-6">
+							<?php if(!is_premium()) : ?>
+								<a href="<?php echo get_page_link('156'); ?>" class="scroll-down">Get free membership</a>
+							<?php else : ?>
+								<a href="#pay" class="scroll-down">Get free membership</a>
+							<?php endif; ?>
+						</div>
 					</div>
 				</div>
 
