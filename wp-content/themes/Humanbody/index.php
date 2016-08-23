@@ -15,7 +15,7 @@
 		<div class="text-wrapper">
 			<h2><a href="<?php echo bloginfo('url').'/articles/consciousness/' ?>">The Human</a></h2>
 			<p>
-				Each of us is a ray of light striving for itself, but failing to remember we are all parts of the same source. Above Good or Bad, life itself, that exists, and always will.
+				Each of us is a ray of light striving for itself, but failing to remember we are all parts of the same source. Above Good or Bad, life itself.
 			</p>
 
 		</div>
@@ -44,7 +44,7 @@
 		<div class="text-wrapper">
 			<h2><a href="<?php echo bloginfo('url').'/articles/science/' ?>">The Body</a></h2>
 			<p>
-				The temporary shelter of the consciousness that somehow manages to trick many of us into thinking it is our actual self. Source of much pleasure and pain, it works as a device that helps us explore the world. We can only own one at a time, it often breaks and in some cases permanently crashes without warning.
+				Source of much pleasure and pain, it works as a device that helps us explore the world. We can only own one at a time, it often breaks and in some cases permanently crashes without warning.
 			</p>
 		</div>
 	</div>
