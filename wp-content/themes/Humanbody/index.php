@@ -15,7 +15,7 @@
 		<div class="text-wrapper">
 			<h2><a href="<?php echo bloginfo('url').'/articles/consciousness/' ?>">The Human</a></h2>
 			<p>
-				Each of us is a ray of light striving for itself, but failing to remember we are all parts of the same source. Our mind and life circumstances are only external layers enclosing the unaffected essence, which is what we truly are. Above Good or Bad, life itself, that exists, and always will.
+				Each of us is a ray of light striving for itself, but failing to remember we are all parts of the same source. Above Good or Bad, life itself, that exists, and always will.
 			</p>
 
 		</div>
