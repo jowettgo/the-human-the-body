@@ -17,8 +17,6 @@ class spinal_register_user
      */
     public function register()
     {
-
-
         /* register email */
         $email = isset($_POST['user_email']) ? $_POST['user_email'] : false;
         /* check if the user exists in the database to begin with */

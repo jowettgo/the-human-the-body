@@ -25,3 +25,17 @@ function renderInterests()
 }
 
 
+add_action('wp_footer', 'add_select2');
+function add_select2() {
+    echo "
+            <script>
+                $( document ).ready(function() {
+                    $('.select2').select2({
+                        placeholder: 'Click here and begin typing...',
+                        maximumSelectionLength: 40
+                    });
+                });
+            </script>
+        ";
+
+}

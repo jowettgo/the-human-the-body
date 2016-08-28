@@ -155,10 +155,11 @@ jQuery(document).ready(function() {
 
 
     /*############################*/
-    $('.select2').select2({
-        placeholder: 'Click here and begin typing...',
-        maximumSelectionLength: 40
-    });
+    //moved to _functions.php
+    // $('.select2').select2({
+    //     placeholder: 'Click here and begin typing...',
+    //     maximumSelectionLength: 40
+    // });
 
 })
 

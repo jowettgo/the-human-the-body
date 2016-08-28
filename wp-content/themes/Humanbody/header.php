@@ -7,6 +7,7 @@
 do_action('spinal-primal');
 
 /* homepage options are retrieved with get_option('homepage') */
+$homeOptionsLogo = null; //TODO: @before: this var doesn't get a value.
 if(function_exists('spinal_get_theme_option')) :
 	$homeOptions = spinal_get_theme_option();
 	/* get uploaded logo */

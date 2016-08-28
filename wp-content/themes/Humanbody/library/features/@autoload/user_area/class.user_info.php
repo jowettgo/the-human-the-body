@@ -239,7 +239,7 @@ class user_info extends __user
                         'administrator' => $roles['administrator'],
                         'premium' => $roles['premium'],
                         'interests' => array(
-                            'insterests' => $meta['interests'][0],
+                            'interests' => $meta['interests'][0],
                             'tv' => $meta['tv'][0],
                             'music' => $meta['music'][0],
                             'books' => $meta['books'][0],

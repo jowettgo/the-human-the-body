@@ -505,8 +505,9 @@ function humanbody_check_trial_premium() {
     wp_schedule_event( time(), 'twicedaily', 'hb_twicedaily_trial_event');
   }
 }
-add_action('wp', 'humanbody_check_trial_premium');
 
+
+add_action('wp', 'humanbody_check_trial_premium');
 function check_expired_trial_premium() {
   //days of the free trial is set in the admin panel
   $options = get_option('theme-options');
