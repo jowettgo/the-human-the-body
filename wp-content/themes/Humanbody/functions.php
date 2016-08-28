@@ -610,5 +610,11 @@ function add_googleanalytics() {
 //add_action('phpmailer_init', 'mailtrap');
 
 
+add_action('the_champ_login_user', 'bypass_user_activation');
+function bypass_user_activation($userId, $profileData, $socialId, $update) {
+    //do_action('the_champ_login_user', $userId, $profileData, $socialId, $update); @\inc\social_login.php
+    delete_user_meta( $userId, 'has_to_be_activated' );
+}
+
 ?>
 
