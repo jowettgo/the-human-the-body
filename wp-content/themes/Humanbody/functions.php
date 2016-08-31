@@ -618,6 +618,8 @@ function bypass_user_activation($userId, $profileData, $socialId, $update) {
 
 add_action('the_champ_user_successfully_created', 'after_social_register_user_created');
 function after_social_register_user_created($userId, $userdata, $profileData) {
+    $u = new WP_User($userId);
+    $u->add_role('premium_member');
     add_user_meta( $userId, 'trial_premium', time(), true );
 }
 
