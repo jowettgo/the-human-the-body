@@ -616,5 +616,12 @@ function bypass_user_activation($userId, $profileData, $socialId, $update) {
     delete_user_meta( $userId, 'has_to_be_activated' );
 }
 
+add_action('the_champ_user_successfully_created', 'after_social_register_user_created');
+function after_social_register_user_created($userId, $userdata, $profileData) {
+    add_user_meta( $userId, 'trial_premium', time(), true );
+}
+
+
+
 ?>
 
