@@ -411,7 +411,7 @@ function the_champ_format_profile_data($profileData, $provider){
 		$temp['first_name'] = isset($profileData['first_name']) ? $profileData['first_name'] : '';
 		$temp['last_name'] = isset($profileData['last_name']) ? $profileData['last_name'] : '';
 		$temp['bio'] = '';
-		$temp['link'] = '';
+		$temp['link'] = isset($profileData['uid']) ? 'https://vk.com/id' . $profileData['uid'] : '';
 		$temp['avatar'] = isset($profileData['photo']) ? $profileData['photo'] : '';
 		$temp['large_avatar'] = isset($profileData['photo_big']) ? $profileData['photo_big'] : '';
 	}elseif($provider == 'instagram'){

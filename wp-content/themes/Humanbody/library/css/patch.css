@@ -158,3 +158,25 @@ span.select2-selection.select2-selection--multiple {
 .select2-search > input.select2-search__field {
     border-bottom: 0 none !important;
 }
+
+.the_champ_social_login_title {
+    color: #FFFFFF;
+}
+
+.theChampFacebookLogin {
+    display: block;
+}
+
+.social-sign-up {
+    text-align: center;
+}
+.social-sign-up hr {
+    border: 0;
+    height: 1px;
+    background-image: -webkit-linear-gradient(left, transparent, #ffffff, transparent);
+    background-image: -moz-linear-gradient(left, transparent, #ffffff, transparent);
+    background-image: -ms-linear-gradient(left, transparent, #ffffff, transparent);
+    background-image: -o-linear-gradient(left, transparent, #ffffff, transparent);
+    margin: 15px auto;
+    width: 40%;
+}

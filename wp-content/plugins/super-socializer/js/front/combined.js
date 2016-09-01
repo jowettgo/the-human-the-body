@@ -555,6 +555,8 @@ function theChampFilterSharing(val) {
 	});
 };
 
+var heateorSsFacebookTargetUrls = [];
+
 /**
  * Get sharing counts
  */
@@ -583,6 +585,9 @@ function theChampGetSharingCounts(){
 		success: function(data, textStatus, XMLHttpRequest){
 			if(data.status == 1){
 				for(var i in data.message){
+					if(data.facebook){
+						heateorSsFacebookTargetUrls.push(i);
+					}
 					var sharingContainers = jQuery("div[super-socializer-data-href='"+i+"']");
 
 					jQuery(sharingContainers).each(function(){
@@ -603,7 +608,7 @@ function theChampGetSharingCounts(){
 							}
 							totalCount += parseInt(sharingCount);
 							if(sharingCount < 1){ continue; }
-							jQuery(targetElement).html(theChampCalculateCountWidth(sharingCount)).css({'visibility': 'visible', 'display': 'block'});
+							jQuery(targetElement).html(theChampCalculateApproxCount(sharingCount)).css({'visibility': 'visible', 'display': 'block'});
 							
 							if ( ( typeof theChampReduceHorizontalSvgWidth != 'undefined' && jQuery(this).hasClass('the_champ_horizontal_sharing') ) || ( typeof theChampReduceVerticalSvgWidth != 'undefined' && jQuery(this).hasClass('the_champ_vertical_sharing') ) ) {
 								jQuery(targetElement).parents('li').find('.theChampSharingSvg').css('float', 'left');
@@ -615,16 +620,97 @@ function theChampGetSharingCounts(){
 						var totalCountContainer = jQuery(this).find('.theChampTCBackground');
 						jQuery(totalCountContainer).each(function(){
 							var containerHeight = jQuery(this).css('height');
-							jQuery(this).html('<div class="theChampTotalShareCount" style="font-size: '+ (parseInt(containerHeight) * 62/100) +'px">' + theChampCalculateCountWidth(totalCount) + '</div><div class="theChampTotalShareText" style="font-size: '+ (parseInt(containerHeight) * 38/100) +'px">' + (totalCount < 2 ? heateorSsShareText : heateorSsSharesText) + '</div>').css('visibility', 'visible');
+							jQuery(this).html('<div class="theChampTotalShareCount" style="font-size: '+ (parseInt(containerHeight) * 62/100) +'px">' + theChampCalculateApproxCount(totalCount) + '</div><div class="theChampTotalShareText" style="font-size: '+ (parseInt(containerHeight) * 38/100) +'px">' + (totalCount == 0 || totalCount > 1 ? heateorSsSharesText : heateorSsShareText) + '</div>').css('visibility', 'visible');
 						});
 					});
+				}
+				if(heateorSsFacebookTargetUrls.length != 0){
+					theChampFetchFacebookShares(heateorSsFacebookTargetUrls);
 				}
 			}
 		}
 	});
 }
 
-function theChampCalculateCountWidth(sharingCount){
+function theChampFetchFacebookShares(targetUrls){
+	var loopCounter = 0;
+	for(var j in targetUrls){
+		loopCounter++;
+		theChampFBShareJSONCall(targetUrls[j], loopCounter, targetUrls.length);
+	}
+}
+
+function theChampFBShareJSONCall(targetUrl, loopCounter, targetUrlsLength) {
+	jQuery.getJSON('//graph.facebook.com/?id=' + targetUrl, function(data){
+	    if(data.share && data.share.share_count){
+	    	var sharingContainers = jQuery("div[super-socializer-data-href='"+targetUrl+"']");
+
+			jQuery(sharingContainers).each(function(){
+				var targetElement = jQuery(this).find('.the_champ_facebook_count');
+				var sharingCount = parseInt(data.share.share_count);
+
+				if(jQuery(targetElement).attr('ss_st_count') !== undefined){
+					sharingCount += parseInt(jQuery(targetElement).attr('ss_st_count'));
+				}
+
+				jQuery(targetElement).html(theChampCalculateApproxCount(sharingCount)).css({'visibility': 'visible', 'display': 'block'});
+				
+				if ( ( typeof theChampReduceHorizontalSvgWidth != 'undefined' && jQuery(this).hasClass('the_champ_horizontal_sharing') ) || ( typeof theChampReduceVerticalSvgWidth != 'undefined' && jQuery(this).hasClass('the_champ_vertical_sharing') ) ) {
+					jQuery(targetElement).parents('li').find('.theChampSharingSvg').css('float', 'left');
+				}
+				if ( ( typeof theChampReduceHorizontalSvgHeight != 'undefined' && jQuery(this).hasClass('the_champ_horizontal_sharing') ) || ( typeof theChampReduceVerticalSvgHeight != 'undefined' && jQuery(this).hasClass('the_champ_vertical_sharing') ) ) {
+					jQuery(targetElement).parents('li').find('.theChampSharingSvg').css('marginTop', '0');
+				}
+				var totalCountContainer = jQuery(this).find('.theChampTCBackground');
+				jQuery(totalCountContainer).each(function(){
+					var totalShareCountElem = jQuery(this).find('.theChampTotalShareCount');
+					var totalShareCount = jQuery(totalShareCountElem).text();
+					var newTotalCount = theChampCalculateActualCount(totalShareCount) + sharingCount;
+					jQuery(totalShareCountElem).text(theChampCalculateApproxCount(newTotalCount));
+					jQuery(this).find('.theChampTotalShareText').text(newTotalCount == 0 || newTotalCount > 1 ? heateorSsSharesText : heateorSsShareText);
+				});
+			});
+		}
+		
+		if(loopCounter == targetUrlsLength){
+			setTimeout(function(){
+				var facebookShares = {};
+				for(var i in heateorSsFacebookTargetUrls){
+					var sharingContainers = jQuery("div[super-socializer-data-href='"+heateorSsFacebookTargetUrls[i]+"']");
+					jQuery(sharingContainers).each(function(){
+						var facebookCountElement = jQuery(this).find('.the_champ_facebook_count');
+						var shareCountString = jQuery(facebookCountElement).text().trim();
+						if(shareCountString != ''){
+							var shareCount = parseInt(theChampCalculateActualCount(shareCountString));
+							if(jQuery(facebookCountElement).attr('ss_st_count') !== undefined){
+								var startingCount = parseInt(jQuery(facebookCountElement).attr('ss_st_count').trim());
+								shareCount = Math.abs(shareCount - startingCount);
+							}
+							facebookShares[heateorSsFacebookTargetUrls[i]] = shareCount;
+							return;
+						}
+					});
+				}
+				theChampSaveFacebookShares(facebookShares);
+			}, 1000);
+		}
+	});
+}
+
+function theChampSaveFacebookShares(facebookShares){
+	jQuery.ajax({
+		type: 'GET',
+		dataType: 'json',
+		url: theChampSharingAjaxUrl,
+		data: {
+			action: 'the_champ_save_facebook_shares',
+			share_counts: facebookShares,
+		},
+		success: function(data, textStatus, XMLHttpRequest){}
+	});
+}
+
+function theChampCalculateApproxCount(sharingCount){
 	if(sharingCount > 999 && sharingCount < 10000){
 		sharingCount = Math.round(sharingCount/1000) + 'K';
 	}else if(sharingCount > 9999 && sharingCount < 100000){
@@ -635,6 +721,15 @@ function theChampCalculateCountWidth(sharingCount){
 		sharingCount = Math.round(sharingCount/1000000) + 'M';
 	}
 	return sharingCount;
+}
+
+function theChampCalculateActualCount(sharingCount){
+	if(sharingCount.indexOf('K') > 0){
+		sharingCount = parseInt(sharingCount.replace('K', '')) * 1000;
+	}else if(sharingCount.indexOf('M') > 0){
+		sharingCount = parseInt(sharingCount.replace('M', '')) * 1000000;
+	}
+	return parseInt(sharingCount);
 }
 
 function theChampCapitaliseFirstLetter(e) {

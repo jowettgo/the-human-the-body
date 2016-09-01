@@ -4,7 +4,7 @@ Donate link: https://www.heateor.com/donate?action=Super+Socializer
 Tags: the champ, champ, social login, social sharing, social commenting, social comments, social plugin, buddypress, bbpress, social share, comments, share post, user profile data, social analytics, online identity, social profile storage, id provider, single sign-on, social media tools, free social login, post to social networks, social authentication, social app, connect, capture social data, social sign-in, signin, sign up, signup, social connect, facebook login, twitter login, google login, google+ login, linkedin login, yahoo, vkontakte, instagram, reddit, digg, stumbleupon, delicious, float it, tumblr, social network
 Requires at least: 2.5.0
 Tested up to: 4.6
-Stable tag: 7.7.4
+Stable tag: 7.7.7
 License: GPLv2 or later
 
 The unique Social Plugin to let you integrate Social Login, Social Share and Social Comments at your website
@@ -204,6 +204,23 @@ Yes, we can help you with it. Just drop an email at support@heateor.com
 8. **Social Commenting**: Disqus Commenting selected
 
 == Changelog ==
+= 7.7.7 =
+* [Bugfix] Facebook share counts were not appearing on websites with SSL enabled, when "Load all Javascript files in single file" option was enabled
+
+= 7.7.6 =
+* [Bugfix] Facebook share counts were not appearing on websites with SSL enabled
+
+= 7.7.5 =
+* [Bugfix] Facebook share counts were not appearing in some cases
+* [Bugfix] Shares specified in "Starting share count" option for individual posts/pages were not appearing at homepage
+* [Bugfix] Querystring variables were not being appended to the url being shared
+* [Bugfix] Border radius was not reverting to default when kept blank in "Theme Selection" section at sharing options page in admin area
+* [Improvement] "Share" was being displayed in total share counts for 0 shares, instead of "Shares"
+* [Improvement] Admin UI improvement
+* [Improvement] "heateor_ss_custom_share_url" filter has been included in widgets and shortcode for sharing icons and like buttons
+* [New] Added option to enable/disable sharing on AMP pages
+* [New] Vkontakte profile url is now being saved in "Website" field of profile page
+
 = 7.7.4 =
 * [Bugfix] Share counts suddenly stopped appearing because of deprecated Facebook share count API
 * [Improvement] "Super Socializer - Social Avatar" heading appearing at profile page has been updated to "Social Avatar"
@@ -963,3 +980,20 @@ Yes, we can help you with it. Just drop an email at support@heateor.com
 * [Improvement] "Super Socializer - Social Avatar" heading appearing at profile page has been updated to "Social Avatar"
 * [Improvement] Admin UI improvement
 * [Improvement] A couple of text strings were not being included in the translation files
+
+= 7.7.5 =
+* [Bugfix] Facebook share counts were not appearing in some cases
+* [Bugfix] Shares specified in "Starting share count" option for individual posts/pages were not appearing at homepage
+* [Bugfix] Querystring variables were not being appended to the url being shared
+* [Bugfix] Border radius was not reverting to default when kept blank in "Theme Selection" section at sharing options page in admin area
+* [Improvement] "Share" was being displayed in total share counts for 0 shares, instead of "Shares"
+* [Improvement] Admin UI improvement
+* [Improvement] "heateor_ss_custom_share_url" filter has been included in widgets and shortcode for sharing icons and like buttons
+* [New] Added option to enable/disable sharing on AMP pages
+* [New] Vkontakte profile url is now being saved in "Website" field of profile page
+
+= 7.7.6 =
+* [Bugfix] Facebook share counts were not appearing on websites with SSL enabled
+
+= 7.7.7 =
+* [Bugfix] Facebook share counts were not appearing on websites with SSL enabled, when "Load all Javascript files in single file" option was enabled

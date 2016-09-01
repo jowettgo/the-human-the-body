@@ -23,12 +23,19 @@ function the_champ_sharing_shortcode($params){
 			return;
 		}
 		global $post;
-		if($url){
+		$customUrl = apply_filters('heateor_ss_custom_share_url', '', $post);
+		if($customUrl){
+			$targetUrl = $customUrl;
+			$postId = 0;
+		}elseif($url){
 			$targetUrl = $url;
 			$postId = 0;
 		}elseif(is_front_page()){
 			$targetUrl = home_url();
 			$postId = 0;
+		}elseif(isset($_SERVER['QUERY_STRING']) && $_SERVER['QUERY_STRING']){
+			$targetUrl = html_entity_decode(esc_url(the_champ_get_http().$_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"]));
+			$postId = $post -> ID;
 		}elseif(get_permalink($post -> ID)){
 			$targetUrl = get_permalink($post -> ID);
 			$postId = $post -> ID;
@@ -104,12 +111,19 @@ function the_champ_counter_shortcode($params){
 			return;
 		}
 		global $post;
-		if($url){
+		$customUrl = apply_filters('heateor_ss_custom_share_url', '', $post);
+		if($customUrl){
+			$targetUrl = $customUrl;
+			$postId = 0;
+		}elseif($url){
 			$targetUrl = $url;
 			$postId = 0;
 		}elseif(is_front_page()){
 			$targetUrl = home_url();
 			$postId = 0;
+		}elseif(isset($_SERVER['QUERY_STRING']) && $_SERVER['QUERY_STRING']){
+			$targetUrl = html_entity_decode(esc_url(the_champ_get_http().$_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"]));
+			$postId = $post -> ID;
 		}elseif(get_permalink($post -> ID)){
 			$targetUrl = get_permalink($post -> ID);
 			$postId = $post -> ID;

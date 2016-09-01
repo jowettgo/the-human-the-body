@@ -26,10 +26,8 @@ function the_champ_prepare_sharing_html( $postUrl, $sharingType = 'horizontal', 
 		return $output;
 	}
 	$html = '';
-	$sharingMeta = '';
-	if (! is_front_page() || ( is_front_page() && 'page' == get_option( 'show_on_front' ) ) ) {
-		$sharingMeta = get_post_meta( $post->ID, '_the_champ_meta', true );
-	}
+	
+	$sharingMeta = get_post_meta( $post->ID, '_the_champ_meta', true );
 
 	if ( isset( $theChampSharingOptions[$sharingType.'_re_providers'] ) ) {
 		
@@ -322,6 +320,17 @@ function the_champ_generate_counter_bitly_url($url, $postId = 0){
 	return false;
 }
 
+/**
+ * Check if current page is AMP page
+ */
+function the_champ_is_amp_page(){
+	$currentPageUrl = html_entity_decode(esc_url(the_champ_get_http() . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"]));
+	if(strpos($currentPageUrl, '/amp') !== false || strpos($currentPageUrl, '?amp=1') !== false){
+		return true;
+	}
+	return false;
+}
+
 $theChampVerticalHomeCount = 0;
 $theChampVerticalExcerptCount = 0;
 $theChampVerticalCounterHomeCount = 0;
@@ -330,13 +339,19 @@ $theChampVerticalCounterExcerptCount = 0;
  * Enable sharing interface at selected areas.
  */
 function the_champ_render_sharing($content){
+	global $theChampSharingOptions, $theChampCounterOptions;
+
+	// if sharing is disabled on AMP, return content as is
+	if(!isset($theChampSharingOptions['amp_enable']) && the_champ_is_amp_page()){
+		return $content;
+	}
+
 	global $post;
 	// hook to bypass sharing
 	$disable = apply_filters('the_champ_bypass_sharing', $post, $content);
 	// if $disable value is 1, return content without sharing interface
 	if($disable === 1){ return $content; }
 	$sharingMeta = get_post_meta($post->ID, '_the_champ_meta', true);
-	global $theChampSharingOptions, $theChampCounterOptions;
 	
 	$sharingBpActivity = false;
 	$counterBpActivity = false;
@@ -365,7 +380,7 @@ function the_champ_render_sharing($content){
 			}elseif(isset($theChampCounterOptions['horizontal_target_url'])){
 				if($theChampCounterOptions['horizontal_target_url'] == 'default'){
 					$counterPostUrl = get_permalink($post->ID);
-					if($counterPostUrl == ''){
+					if((isset($_SERVER['QUERY_STRING']) && $_SERVER['QUERY_STRING']) || $counterPostUrl == ''){
 						$counterPostUrl = html_entity_decode(esc_url(the_champ_get_http().$_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"]));
 					}
 				}elseif($theChampCounterOptions['horizontal_target_url'] == 'home'){
@@ -443,7 +458,7 @@ function the_champ_render_sharing($content){
 			}elseif(isset($theChampCounterOptions['vertical_target_url'])){
 				if($theChampCounterOptions['vertical_target_url'] == 'default'){
 					$counterPostUrl = get_permalink($post->ID);
-					if($counterPostUrl == ''){
+					if((isset($_SERVER['QUERY_STRING']) && $_SERVER['QUERY_STRING']) || $counterPostUrl == ''){
 						$counterPostUrl = html_entity_decode(esc_url(the_champ_get_http().$_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"]));
 					}
 				}elseif($theChampCounterOptions['vertical_target_url'] == 'home'){
@@ -529,7 +544,7 @@ function the_champ_render_sharing($content){
 			}elseif(isset($theChampSharingOptions['horizontal_target_url'])){
 				if($theChampSharingOptions['horizontal_target_url'] == 'default'){
 					$postUrl = get_permalink($post->ID);
-					if($postUrl == ''){
+					if((isset($_SERVER['QUERY_STRING']) && $_SERVER['QUERY_STRING']) || $postUrl == ''){
 						$postUrl = html_entity_decode(esc_url(the_champ_get_http().$_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"]));
 					}
 				}elseif($theChampSharingOptions['horizontal_target_url'] == 'home'){
@@ -608,7 +623,7 @@ function the_champ_render_sharing($content){
 			}elseif(isset($theChampSharingOptions['vertical_target_url'])){
 				if($theChampSharingOptions['vertical_target_url'] == 'default'){
 					$postUrl = get_permalink($post->ID);
-					if($postUrl == ''){
+					if((isset($_SERVER['QUERY_STRING']) && $_SERVER['QUERY_STRING']) || $postUrl == ''){
 						$postUrl = html_entity_decode(esc_url(the_champ_get_http().$_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"]));
 					}
 				}elseif($theChampSharingOptions['vertical_target_url'] == 'home'){
@@ -756,7 +771,10 @@ function the_champ_sharing_count(){
 	}
 
 	$responseData = array();
-
+	$ajaxResponse = array();
+	if(in_array('facebook', $sharingNetworks)){
+		$ajaxResponse['facebook'] = 1;
+	}
 	$multiplier = 60;
 	switch ( $theChampSharingOptions['share_count_cache_refresh_unit'] ) {
 		case 'seconds':
@@ -785,9 +803,6 @@ function the_champ_sharing_count(){
 		$shareCountTransient = array();
 		foreach($sharingNetworks as $provider){
 			switch($provider){
-				case 'facebook':
-					$url = 'http://graph.facebook.com/?id=' . $targetUrl;
-					break;
 				case 'twitter':
 						$url = $twitterCountApi . $targetUrl;
 						break;
@@ -829,22 +844,14 @@ function the_champ_sharing_count(){
 					$body = json_decode($body);
 				}
 				switch($provider){
-					case 'facebook':
-						if(isset($body -> share) && !empty($body -> share -> share_count)){
-							$responseData[$targetUrl]['facebook'] = $body -> share -> share_count;
-							$shareCountTransient['facebook'] = $body -> share -> share_count;
-						}else{
-							$responseData[$targetUrl]['facebook'] = 0;
+					case 'twitter':
+						if ( ! empty( $body -> count ) ) {
+							$responseData[$targetUrl]['twitter'] = $body -> count;
+							$shareCountTransient['twitter'] = $body -> count;
+						} else {
+							$responseData[$targetUrl]['twitter'] = 0;
 						}
 						break;
-					case 'twitter':
-							if ( ! empty( $body -> count ) ) {
-								$responseData[$targetUrl]['twitter'] = $body -> count;
-								$shareCountTransient['twitter'] = $body -> count;
-							} else {
-								$responseData[$targetUrl]['twitter'] = 0;
-							}
-							break;
 					case 'linkedin':
 						if(!empty($body -> count)){
 							$responseData[$targetUrl]['linkedin'] = $body -> count;
@@ -917,11 +924,68 @@ function the_champ_sharing_count(){
 		set_transient('heateor_ss_share_count_' . heateor_ss_get_share_count_transient_id($targetUrl), $shareCountTransient, $transientExpirationTime);
 	}
 	do_action('heateor_ss_share_count_ajax_hook', $responseData);
-	the_champ_ajax_response(array('status' => 1, 'message' => $responseData));
+	
+	$ajaxResponse['status'] = 1;
+	$ajaxResponse['message'] = $responseData;
+	
+	the_champ_ajax_response($ajaxResponse);
 }
 
 add_action('wp_ajax_the_champ_sharing_count', 'the_champ_sharing_count');
 add_action('wp_ajax_nopriv_the_champ_sharing_count', 'the_champ_sharing_count');
+
+/**
+ * Save Facebook share counts in transient
+ */
+function the_champ_save_facebook_shares(){
+	if(isset($_GET['share_counts']) && is_array($_GET['share_counts']) && count($_GET['share_counts']) > 0){
+		$targetUrls = $_GET['share_counts'];
+		foreach($targetUrls as $k => $v){
+			$targetUrls[$k] = esc_attr(trim($v));
+		}
+	}else{
+		the_champ_ajax_response(array('status' => 0, 'message' => __('Invalid request')));
+	}
+	
+	global $theChampSharingOptions;
+
+	$multiplier = 60;
+	switch ( $theChampSharingOptions['share_count_cache_refresh_unit'] ) {
+		case 'seconds':
+			$multiplier = 1;
+			break;
+
+		case 'minutes':
+			$multiplier = 60;
+			break;
+		
+		case 'hours':
+			$multiplier = 3600;
+			break;
+
+		case 'days':
+			$multiplier = 3600*24;
+			break;
+
+		default:
+			$multiplier = 60;
+			break;
+	}
+	$transientExpirationTime = $multiplier * $theChampSharingOptions['share_count_cache_refresh_count'];
+	
+	foreach($targetUrls as $key => $value){
+		$transientId = heateor_ss_get_share_count_transient_id($key);
+		$shareCountTransient = get_transient('heateor_ss_share_count_' . $transientId);
+		if($shareCountTransient !== false){
+			$shareCountTransient['facebook'] = $value;
+			set_transient('heateor_ss_share_count_' . $transientId, $shareCountTransient, $transientExpirationTime);
+		}
+	}
+	die;
+}
+
+add_action('wp_ajax_the_champ_save_facebook_shares', 'the_champ_save_facebook_shares');
+add_action('wp_ajax_nopriv_the_champ_save_facebook_shares', 'the_champ_save_facebook_shares');
 
 /**
  * Get ID of the share count transient

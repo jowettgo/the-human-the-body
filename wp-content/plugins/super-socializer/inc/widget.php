@@ -113,11 +113,17 @@ class TheChampSharingWidget extends WP_Widget {
 		
 		global $theChampSharingOptions, $post;
 		$postId = $post -> ID;
-		if(isset($instance['target_url'])){
+		$customUrl = apply_filters('heateor_ss_custom_share_url', '', $post);
+		if($customUrl){
+			$sharingUrl = $customUrl;
+			$postId = 0;
+		}elseif(isset($instance['target_url'])){
 			if($instance['target_url'] == 'default'){
 				if(is_home()){
 					$sharingUrl = home_url();
 					$postId = 0;
+				}elseif(isset($_SERVER['QUERY_STRING']) && $_SERVER['QUERY_STRING']){
+					$sharingUrl = html_entity_decode(esc_url(the_champ_get_http().$_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"]));
 				}elseif(get_permalink($post -> ID)){
 					$sharingUrl = get_permalink($post->ID);
 				}else{
@@ -246,10 +252,10 @@ class TheChampVerticalSharingWidget extends WP_Widget {
 	public function __construct() { 
 		parent::__construct( 
 			'TheChampVerticalSharing', //unique id 
-			'Super Socializer - Sharing (Floating Floating Widget)', //title displayed at admin panel 
+			'Super Socializer - Sharing (Floating Widget)', //title displayed at admin panel 
 			//Additional parameters 
 			array(
-				'description' => __( 'Floating floating sharing widget. Let your website users share content on popular Social networks like Facebook, Twitter, Tumblr, Google+ and many more', 'Super-Socializer' )) 
+				'description' => __( 'Floating sharing widget. Let your website users share content on popular Social networks like Facebook, Twitter, Tumblr, Google+ and many more', 'Super-Socializer' )) 
 			); 
 	}  
 
@@ -264,11 +270,17 @@ class TheChampVerticalSharingWidget extends WP_Widget {
 		
 		global $theChampSharingOptions, $post;
 		$postId = $post -> ID;
-		if(isset($instance['target_url'])){
+		$customUrl = apply_filters('heateor_ss_custom_share_url', '', $post);
+		if($customUrl){
+			$sharingUrl = $customUrl;
+			$postId = 0;
+		}elseif(isset($instance['target_url'])){
 			if($instance['target_url'] == 'default'){
 				if(is_home()){
 					$sharingUrl = home_url();
 					$postId = 0;
+				}elseif(isset($_SERVER['QUERY_STRING']) && $_SERVER['QUERY_STRING']){
+					$sharingUrl = html_entity_decode(esc_url(the_champ_get_http().$_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"]));
 				}elseif(get_permalink($post -> ID)){
 					$sharingUrl = get_permalink($post->ID);
 				}else{
@@ -429,11 +441,17 @@ class TheChampCounterWidget extends WP_Widget {
 		
 		global $theChampCounterOptions, $post;
 		$postId = $post -> ID;
-		if(isset($instance['target_url'])){
+		$customUrl = apply_filters('heateor_ss_custom_share_url', '', $post);
+		if($customUrl){
+			$sharingUrl = $customUrl;
+			$postId = 0;
+		}elseif(isset($instance['target_url'])){
 			if($instance['target_url'] == 'default'){
 				if(is_home()){
 					$counterUrl = home_url();
 					$postId = 0;
+				}elseif(isset($_SERVER['QUERY_STRING']) && $_SERVER['QUERY_STRING']){
+					$counterUrl = html_entity_decode(esc_url(the_champ_get_http().$_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"]));
 				}elseif(get_permalink($post -> ID)){
 					$counterUrl = get_permalink($post->ID);
 				}else{
@@ -547,10 +565,10 @@ class TheChampVerticalCounterWidget extends WP_Widget {
 	public function __construct() { 
 		parent::__construct( 
 			'TheChampVerticalCounter', //unique id 
-			'Super Socializer - Like Buttons (Floating Floating Widget)', //title displayed at admin panel 
+			'Super Socializer - Like Buttons (Floating Widget)', //title displayed at admin panel 
 			//Additional parameters 
 			array(
-				'description' => __( 'Floating floating like buttons widget. Let your website users share/like content on popular Social networks like Facebook, Twitter, Google+ and many more', 'Super-Socializer' )) 
+				'description' => __( 'Floating like buttons widget. Let your website users share/like content on popular Social networks like Facebook, Twitter, Google+ and many more', 'Super-Socializer' )) 
 			); 
 	}  
 
@@ -565,11 +583,17 @@ class TheChampVerticalCounterWidget extends WP_Widget {
 		
 		global $theChampCounterOptions, $post;
 		$postId = $post -> ID;
-		if(isset($instance['target_url'])){
+		$customUrl = apply_filters('heateor_ss_custom_share_url', '', $post);
+		if($customUrl){
+			$sharingUrl = $customUrl;
+			$postId = 0;
+		}elseif(isset($instance['target_url'])){
 			if($instance['target_url'] == 'default'){
 				if(is_home()){
 					$counterUrl = home_url();
 					$postId = 0;
+				}elseif(isset($_SERVER['QUERY_STRING']) && $_SERVER['QUERY_STRING']){
+					$counterUrl = html_entity_decode(esc_url(the_champ_get_http().$_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"]));
 				}elseif(get_permalink($post -> ID)){
 					$counterUrl = get_permalink($post->ID);
 				}else{

@@ -47,6 +47,17 @@ $userID = $signup->register();
 				<!-- Start description wrapper -->
 				<div class="description-wrapper col-lg-12 col-md-12 col-sm-12 col-xs-12">
 					<h1 style="margin-bottom: 20px"><?php the_title() ?></h1>
+
+					<div class="social-sign-up">
+						<p>Create a profile or sign up with your preferred social service.</p>
+						<div style="display: inline-block;">
+							<?php
+								echo do_shortcode('[TheChamp-Login]');
+							?>
+						</div>
+						<hr />
+					</div>
+
 					<?php
 					$options = get_option('theme-options');
 				    $trial_days = (isset($options['trial_member']) and !empty($options['trial_member']) )? intval($options['trial_member']) : 30;
