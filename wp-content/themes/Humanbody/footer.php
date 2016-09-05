@@ -95,5 +95,14 @@ $twitterlink = $options['twitter'];
         <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1571493243159705&ev=PageView&noscript=1"/></noscript>
         <!-- End Facebook Pixel Code -->
 
+        <!-- Twitter universal website tag code -->
+        <script>
+            !function(e,n,u,a){e.twq||(a=e.twq=function(){a.exe?a.exe.apply(a,arguments):a.queue.push(arguments);},a.version='1',a.queue=[],t=n.createElement(u),t.async=!0,t.src='//static.ads-twitter.com/uwt.js',s=n.getElementsByTagName(u)[0],s.parentNode.insertBefore(t,s))}(window,document,'script');
+            // Insert Twitter Pixel ID and Standard Event data below
+            twq('init','nvesa');
+            twq('track','PageView');
+        </script>
+        <!-- End Twitter universal website tag code -->
+
     </body>
 </html> <!-- end of site. what a ride! -->
