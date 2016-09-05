@@ -67,10 +67,21 @@
 							</ul>
 						</div>
 
-						<form class="searchbox" action="#">
-							<input type="text" placeholder="Search for topics..." id="search-forums">
-							<input type="submit">
-						</form>
+						<?php
+							if(is_user_logged_in()) {
+								?>
+									<p>Mesaj user nelogat</p>
+								<?php
+							} else {
+								?>
+									<form class="searchbox" action="#">
+										<input type="text" placeholder="Search for topics..." id="search-forums">
+										<input type="submit">
+									</form>
+								<?php
+							}
+						?>
+
 					</div>
 					<!-- End search wrapper -->
 				</div>

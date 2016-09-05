@@ -624,6 +624,18 @@ function after_social_register_user_created($userId, $userdata, $profileData) {
 }
 
 
+function heateor_ss_custom_css(){
+    ?>
+    <style type="text/css">
+        .theChampFacebookLogin{
+            display: block !important
+        }
+    </style>
+    <?php
+}
+add_action('wp_head', 'heateor_ss_custom_css');
+add_action('login_head', 'heateor_ss_custom_css');
+
 
 ?>
 
