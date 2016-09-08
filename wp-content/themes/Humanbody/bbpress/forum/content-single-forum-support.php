@@ -32,7 +32,7 @@
 					<!-- Start search wrapper -->
 					<div class="search-wrapper col-lg-12 col-md-12 col-sm-12 col-xs-12">
 						
-						<a class="fancy-therapeut" href="#fancybox-therapeut">View therapists</a>
+						<a class="fancy-therapeut" href="#fancybox-therapeut">View moderators</a>
 						<div id="fancybox-therapeut" class="asdasd">
 							<ul>
 
